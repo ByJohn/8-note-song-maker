@@ -61,7 +61,7 @@ var sequencer = {
 
       for (let i in notesToAddThisColumn) {
         let addNote = notesToAddThisColumn[i],
-            note = i + 1;
+            note = parseInt(i) + 1;
 
         that.$noteRows[i].innerHTML += '<li>' + (addNote ? note : '') + '</li>';
         // that.$noteRows[i].innerHTML += '<li>.</li>';

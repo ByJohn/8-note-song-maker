@@ -27,6 +27,12 @@ button {
 	cursor: pointer;
 }
 
+.sequence {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
 .sequence .note-row {
 	display: flex;
 }
@@ -39,17 +45,22 @@ button {
 	display: flex;
 	align-items: center;
 	list-style: none;
+	gap: 1em;
 	margin: 0;
 	padding: 0;
 }
 
 .sequence .note-row li {
-	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	list-style: none;
-	width: 1em;
-	height: 1em;
+	width: 2em;
+	height: 2em;
 	margin: 0;
 	padding: 0;
-	border: 1px solid #000;
+	border-radius: 30px;
 	background-color: red;
+	text-align: center;
+	font-weight: bold;
 }

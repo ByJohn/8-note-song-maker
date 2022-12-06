@@ -1,7 +1,7 @@
 //Sequencer
 var sequencer = {
   $sequence: document.getElementById('sequence'),
-  $noteRows: document.querySelectorAll('.note-row'),
+  $noteRows: document.querySelectorAll('.note-row ul'),
   init: function () {},
   normaliseNote: function (note) {
     note = parseInt(note);
@@ -10,7 +10,14 @@ var sequencer = {
 
     return note;
   },
+  clear: function () {
+    this.$noteRows.forEach(function ($row) {
+      $row.innerHTML = '';
+    });
+  },
   draw: function (lines) {
+    this.clear();
+
     lines = lines.trimEnd();
     lines = lines.split("\n");
 
@@ -52,9 +59,13 @@ var sequencer = {
       for (let i; i < 8; i++) {
       }
 
-      notesToAddThisColumn.forEach(function (addNote, noteI) {
-        that.$noteRows[noteI].append('<li>' + (addNote ? noteI + 1 : '') + '</li>');
-      });
+      for (let i in notesToAddThisColumn) {
+        let addNote = notesToAddThisColumn[i],
+            note = i + 1;
+
+        that.$noteRows[i].innerHTML += '<li>' + (addNote ? note : '') + '</li>';
+        // that.$noteRows[i].innerHTML += '<li>.</li>';
+      }
     }
   },
 };

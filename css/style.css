@@ -26,3 +26,30 @@ button {
 	-webkit-appearance: none;
 	cursor: pointer;
 }
+
+.sequence .note-row {
+	display: flex;
+}
+
+.sequence .note-row h3 {
+	margin: 0;
+}
+
+.sequence .note-row ul {
+	display: flex;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.sequence .note-row li {
+	display: block;
+	list-style: none;
+	width: 1em;
+	height: 1em;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #000;
+	background-color: red;
+}

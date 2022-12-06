@@ -4,13 +4,18 @@ var sequencer = {
   $noteRows: document.querySelectorAll('.note-row'),
   init: function () {},
   normaliseNote: function (note) {
-    
+    note = parseInt(note);
+
+    if (isNaN(note) || note < 1 || note > 8) return null;
+
+    return note;
   },
   draw: function (lines) {
     lines = lines.trimEnd();
     lines = lines.split("\n");
 
-    let longestLineIndex = 0;
+    let that = this,
+        longestLineIndex = 0;
 
     //Find the longest line
     lines.forEach(function (line, i) {
@@ -21,8 +26,7 @@ var sequencer = {
 
     //For each character index (column) up to the last character of the longest line
     for (let column = 0; column < lines[longestLineIndex].length; column++) {
-      let that = this,
-          notesToAddThisColumn = {
+        let notesToAddThisColumn = {
         0: false,
         1: false,
         2: false,
@@ -40,9 +44,16 @@ var sequencer = {
           let note = that.normaliseNote(line[column]);
 
           if (note) {
-            notesToAddThisColumn[note] = true;
+            notesToAddThisColumn[note - 1] = true;
           }
         }
+      });
+
+      for (let i; i < 8; i++) {
+      }
+
+      notesToAddThisColumn.forEach(function (addNote, noteI) {
+        that.$noteRows[noteI].append('<li>' + (addNote ? noteI + 1 : '') + '</li>');
       });
     }
   },

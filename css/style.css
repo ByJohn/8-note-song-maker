@@ -1,13 +1,13 @@
 :root {
   --sequencer-line-width: 2px;
-  --note-1-colour: #E53935;
-  --note-2-colour: #8E24AA;
-  --note-3-colour: #3949AB;
-  --note-4-colour: #039BE5;
-  --note-5-colour: #00897B;
-  --note-6-colour: #7CB342;
-  --note-7-colour: #FDD835;
-  --note-8-colour: #FB8C00;
+  --note-1-colour: #D32F2F;
+  --note-2-colour: #F57F17;
+  --note-3-colour: #FDD835;
+  --note-4-colour: #8BC34A;
+  --note-5-colour: #2E7D32;
+  --note-6-colour: #0097A7;
+  --note-7-colour: #1976D2;
+  --note-8-colour: #D81B60;
 }
 
 html,
@@ -105,8 +105,10 @@ form {
 .sequence .note-row h3 {
   display: flex;
   align-items: center;
+  position: sticky;
+  left: 20px;
   min-width: 20px;
-	margin: 0;
+  margin: 0;
 }
 
 .sequence .note-1 h3 {

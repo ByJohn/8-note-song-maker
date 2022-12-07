@@ -1,5 +1,13 @@
 :root {
   --sequencer-line-width: 2px;
+  --note-1-colour: #E53935;
+  --note-2-colour: #8E24AA;
+  --note-3-colour: #3949AB;
+  --note-4-colour: #039BE5;
+  --note-5-colour: #00897B;
+  --note-6-colour: #7CB342;
+  --note-7-colour: #FDD835;
+  --note-8-colour: #FB8C00;
 }
 
 html,
@@ -59,18 +67,15 @@ form {
   overflow-x: auto;
   border-radius: 30px 30px 10px 10px;
   background-color: #fff;
-  white-space: nowrap;
 }
 
 .sequence-inner {
-  display: flex;
+  display: inline-flex;
 	flex-direction: column;
 	gap: 1em;
   position: relative;
   min-width: 100%;
-  padding: 20px;
-  background-color: grey;
-  white-space: nowrap;
+  padding: 20px 30px 20px 20px;
 }
 
 .sequence-inner:before {
@@ -88,7 +93,6 @@ form {
     #fff var(--sequencer-line-width),
     #fff 60px
   );
-  background: none;
 }
 
 .sequence .note-row {
@@ -129,4 +133,36 @@ form {
 
 .sequence .note-row li:empty {
   visibility: hidden;
+}
+
+.sequence .note-1 li {
+  background-color: var(--note-1-colour)
+}
+
+.sequence .note-2 li {
+  background-color: var(--note-2-colour)
+}
+
+.sequence .note-3 li {
+  background-color: var(--note-3-colour)
+}
+
+.sequence .note-1 li {
+  background-color: var(--note-1-colour)
+}
+
+.sequence .note-1 li {
+  background-color: var(--note-1-colour)
+}
+
+.sequence .note-1 li {
+  background-color: var(--note-1-colour)
+}
+
+.sequence .note-1 li {
+  background-color: var(--note-1-colour)
+}
+
+.sequence .note-1 li {
+  background-color: var(--note-1-colour)
 }

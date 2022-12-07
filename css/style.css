@@ -38,6 +38,23 @@ button {
   margin: 0 auto;
 }
 
+h1 {
+  text-align: center;
+}
+
+form {
+  margin-bottom: 1em;
+}
+
+.song-data {
+  display: block;
+  width: 100%;
+  padding: 0.8em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+}
+
 .sequence {
   position: relative;
   overflow-x: auto;
@@ -45,15 +62,17 @@ button {
 	flex-direction: column;
 	gap: 1em;
   padding: 20px;
+  border-radius: 30px 30px 10px 10px;
   background-color: #fff;
 }
 
 .sequence:before {
+  --left: calc(80px - (var(--sequencer-line-width) / 2));
   content: '';
   position: absolute;
   top: 0;
-  left: 80px;
-  width: calc(100% - 80px);
+  left: var(--left);
+  width: calc(100% - var(--left));
   height: 100%;
   background: repeating-linear-gradient(
     90deg,

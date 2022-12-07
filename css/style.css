@@ -16,6 +16,7 @@ body {
 	line-height: 1.4;
 	display: flex;
 	flex-direction: column;
+  background-color: #eee;
 }
 
 button {
@@ -28,17 +29,30 @@ button {
 }
 
 .sequence {
+  overflow-x: auto;
 	display: flex;
 	flex-direction: column;
 	gap: 1em;
+  padding: 1em;
+  background-color: #fff;
+  background: repeating-linear-gradient(
+    90deg,
+    #606dbc,
+    #606dbc 1em,
+    #465298 1em,
+    #465298 2em
+  );
 }
 
 .sequence .note-row {
 	display: flex;
+  gap: 1em;
 }
 
 .sequence .note-row h3 {
+  min-width: 1em;
 	margin: 0;
+  background: red;
 }
 
 .sequence .note-row ul {
@@ -63,4 +77,8 @@ button {
 	background-color: red;
 	text-align: center;
 	font-weight: bold;
+}
+
+.sequence .note-row li:empty {
+  visibility: hidden;
 }

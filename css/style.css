@@ -45,8 +45,32 @@ button {
   margin: 0 auto;
 }
 
-h1 {
+header {
   text-align: center;
+}
+
+header h1,
+header h2 {
+  display: inline-block;
+}
+
+header h1 {
+  font-size: 1.3em;
+}
+
+header h2 {
+  opacity: 0.6;
+  font-size: 0.6em;
+  font-weight: 300;
+}
+
+header h2 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header h2:hover {
+  opacity: 1;
 }
 
 form {
@@ -81,8 +105,8 @@ form {
   flex-direction: column;
   gap: var(--note-gap);
   position: relative;
-  padding: var(--padding);
-  padding-right: calc(var(--padding) * 1.5)
+  padding: calc(var(--padding) / 2) var(--padding);
+  padding-right: calc(var(--padding) * 1.5);
 }
 
 .sequence-inner:before {

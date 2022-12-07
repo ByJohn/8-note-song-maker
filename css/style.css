@@ -68,7 +68,8 @@ form {
   position: relative;
   min-width: 100%;
   padding: 20px;
-  background-color: blue;
+  background-color: grey;
+  white-space: nowrap;
 }
 
 .sequence-inner:before {

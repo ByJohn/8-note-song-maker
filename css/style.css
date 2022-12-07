@@ -27,7 +27,7 @@ body {
   line-height: 1.4;
   display: flex;
   flex-direction: column;
-  background-color: #eee;
+/*   background-color: #eee; */
 }
 
 button {
@@ -41,7 +41,7 @@ button {
 
 .wrapper {
   width: 90%;
-  max-width: 800px;
+/*   max-width: 800px; */
   margin: 0 auto;
 }
 
@@ -73,6 +73,7 @@ form {
   overflow-x: auto;
   border-radius: 30px 30px 10px 10px;
   background-color: #fff;
+  text-align: center;
 }
 
 .sequence-inner {
@@ -80,7 +81,6 @@ form {
   flex-direction: column;
   gap: var(--note-gap);
   position: relative;
-  min-width: 100%;
   padding: var(--padding);
   padding-right: calc(var(--padding) * 1.5)
 }
@@ -91,7 +91,7 @@ form {
   position: absolute;
   top: 0;
   left: var(--left);
-  width: calc(100% - var(--left));
+  width: calc(100% - var(--left) - 1px);
   height: 100%;
   background: repeating-linear-gradient(
     90deg,
@@ -115,6 +115,7 @@ form {
   position: sticky;
   left: var(--padding);
   min-width: var(--padding);
+  height: var(--note-width);
   margin: 0;
 }
 

@@ -1,5 +1,4 @@
 :root {
-  --sequencer-line-width: 2px;
   --note-1-colour: #D32F2F;
   --note-2-colour: #F57F17;
   --note-3-colour: #FDD835;
@@ -12,32 +11,32 @@
 
 html,
 body {
-	height: 100%;
+  height: 100%;
 }
 
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 *, *:before, *:after {
-	box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
-	font-family: 'DM Mono', monospace;
-	font-size: 18px;
-	line-height: 1.4;
-	display: flex;
-	flex-direction: column;
+  font-family: 'DM Mono', monospace;
+  font-size: 18px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
   background-color: #eee;
 }
 
 button {
-	display: inline-block;
-	border: none;
-	border-radius: 3px;
-	text-align: center;
-	-webkit-appearance: none;
-	cursor: pointer;
+  display: inline-block;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  -webkit-appearance: none;
+  cursor: pointer;
 }
 
 .wrapper {
@@ -61,25 +60,32 @@ form {
   border: 1px solid #ddd;
   border-radius: 4px;
   background: #fff;
+  white-space: pre;
+  overflow-wrap: normal;
 }
 
 .sequence {
   overflow-x: auto;
   border-radius: 30px 30px 10px 10px;
   background-color: #fff;
+  --unit: 20px;
+  --note-width: calc(var(--unit) * 2);
+  --note-gap: var(--unit);
+  --line-width: 2px;
 }
 
 .sequence-inner {
   display: inline-flex;
-	flex-direction: column;
-	gap: 1em;
+  flex-direction: column;
+  gap: 1em;
   position: relative;
   min-width: 100%;
-  padding: 20px 30px 20px 20px;
+  padding: var(--unit);
+  padding-right: calc(var(--unit) * 1.5)
 }
 
 .sequence-inner:before {
-  --left: calc(80px - (var(--sequencer-line-width) / 2));
+  --left: calc(80px - (var(--line-width) / 2));
   content: '';
   position: absolute;
   top: 0;
@@ -89,15 +95,15 @@ form {
   background: repeating-linear-gradient(
     90deg,
     #eee,
-    #eee var(--sequencer-line-width),
-    #fff var(--sequencer-line-width),
-    #fff 60px
+    #eee var(--line-width),
+    #fff var(--line-width),
+    #fff calc(var(--unit) * 3)
   );
 }
 
 .sequence .note-row {
-	display: flex;
-  gap: 20px;
+  display: flex;
+  gap: var(--note-gap);
   position: relative;
   white-space: nowrap;
 }
@@ -106,8 +112,8 @@ form {
   display: flex;
   align-items: center;
   position: sticky;
-  left: 20px;
-  min-width: 20px;
+  left: var(--unit);
+  min-width: var(--unit);
   margin: 0;
 }
 
@@ -144,28 +150,28 @@ form {
 }
 
 .sequence .note-row ul {
-	display: flex;
-	align-items: center;
-	list-style: none;
-	gap: 20px;
-	margin: 0;
-	padding: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: var(--note-gap);
+  margin: 0;
+  padding: 0;
 }
 
 .sequence .note-row li {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	list-style: none;
-	width: 40px;
-	height: 40px;
-	margin: 0;
-	padding: 0;
-	border-radius: 30px;
-	background-color: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  width: var(--note-width);
+  height: var(--note-width);
+  margin: 0;
+  padding: 0;
+  border-radius: 30px;
+  background-color: #444;
   color: #fff;
-	text-align: center;
-	font-weight: bold;
+  text-align: center;
+  font-weight: bold;
 }
 
 .sequence .note-row li:empty {

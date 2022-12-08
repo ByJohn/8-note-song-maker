@@ -1,4 +1,3 @@
-Note sound preview
 Play/pause
 Printable
 Sharable

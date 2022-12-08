@@ -21,7 +21,7 @@ var sequencer = {
   drawNote: function (note, parent) {
     let el = document.createElement('li');
 
-    note = this.normaliseNote(line[column]);
+    note = this.normaliseNote(note);
 
     if (note) {
       el.textContent = note;
@@ -66,17 +66,9 @@ var sequencer = {
       //For each note to add to this column
       for (let i in notesToAdd) {
         let addNote = notesToAdd[i],
-            note = parseInt(i) + 1,
-            el = document.createElement('li');
+            note = addNote ? parseInt(i) + 1 : null;
 
-        if (addNote) {
-          el.textContent = note;
-          el.classList.add('note-' + note);
-          el.dataset.play = note;
-        }
-
-        that.$polyNoteRows[i].appendChild(el); += '<li>' + (addNote ? note : '') + '</li>';
-        this.drawNote((addNote ? note : ''), this.$polyNoteRows);
+        that.drawNote(note, that.$polyNoteRows[i]);
       }
     }
   },

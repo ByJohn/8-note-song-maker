@@ -82,7 +82,7 @@ form {
   flex: 1;
   display: block;
   width: 100%;
-  
+  min-height: 3em;
   padding: 0.8em;
   border: 1px solid #ddd;
   border-radius: 4px 0 0 4px;

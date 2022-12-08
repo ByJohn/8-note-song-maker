@@ -19,17 +19,21 @@ var sounds = {
     sound.channels = [];
     sound.num = 5;
     sound.index = 0;
-    sound.volume = 1;
+    sound.volume = 0.25;
 
     for (let i = 0; i < sound.num; i++) {
       sound.channels.push(new Audio(sound.url));
     }
   },
   _getSound: function (id) {
+    if (!this._sounds.hasOwnProperty(id)) return null;
+
     return this._sounds[id];
   },
   _getSoundChannel: function (id, index) {
     let sound = this._getSound(id);
+
+    if (!sound) return null;
 
     index = typeof index === 'undefined' ? sound.index : index;
 
@@ -42,6 +46,8 @@ var sounds = {
   _cycleSound: function (id) {
     let sound = this._getSound(id);
 
+    if (!sound) return false;
+
     sound.index++;
     sound.index = sound.index < sound.num ? sound.index : 0;
 
@@ -49,6 +55,8 @@ var sounds = {
   },
   _playSound: function (id) {
     let audio = this._getSoundChannel(id);
+
+    if (!audio) return false;
 
     audio.play();
 

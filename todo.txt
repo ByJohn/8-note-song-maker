@@ -1,0 +1,8 @@
+Monophonic display
+Play/pause
+Printable
+Sharable
+Debounce
+Tempo control
+Preset songs
+Custom colours

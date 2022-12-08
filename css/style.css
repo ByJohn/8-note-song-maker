@@ -101,9 +101,7 @@ form {
 }
 
 .sequence-inner {
-  display: inline-flex;
-  flex-direction: column;
-  gap: var(--note-gap);
+  display: inline-block;
   position: relative;
   padding: calc(var(--padding) / 2) var(--padding);
   padding-right: calc(var(--padding) * 1.5);
@@ -124,6 +122,12 @@ form {
     #fff var(--line-width),
     #fff calc(var(--note-width) + var(--note-gap))
   );
+}
+
+.sequence .polyphonic {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--note-gap);
 }
 
 .sequence .note-row {

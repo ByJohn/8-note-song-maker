@@ -21,7 +21,6 @@ var sequencer = {
   draw: function (lines) {
     this.clear();
 
-    lines = lines.trimEnd();
     lines = lines.split("\n");
 
     if (lines.length > 1) {

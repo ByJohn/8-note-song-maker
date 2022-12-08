@@ -124,14 +124,18 @@ form {
   );
 }
 
-.sequence.is-polyphonic .monophonic {
+.sequence.is-polyphonic .monophonic,
+.sequence .polyphonic {
   display: none;
 }
 
 .sequence .polyphonic {
-  display: inline-flex;
   flex-direction: column;
   gap: var(--note-gap);
+}
+
+.sequence.is-polyphonic .polyphonic {
+  display: inline-flex;
 }
 
 .sequence .note-row {
@@ -188,6 +192,7 @@ form {
   align-items: center;
   list-style: none;
   gap: var(--note-gap);
+  min-width: var(--note-width);
   margin: 0;
   padding: 0;
 }
@@ -212,34 +217,42 @@ form {
   visibility: hidden;
 }
 
+.sequence li.note-1,
 .sequence .note-1 li {
   background-color: var(--note-1-colour);
 }
 
+.sequence li.note-2,
 .sequence .note-2 li {
   background-color: var(--note-2-colour);
 }
 
+.sequence li.note-3,
 .sequence .note-3 li {
   background-color: var(--note-3-colour);
 }
 
+.sequence li.note-4,
 .sequence .note-4 li {
   background-color: var(--note-4-colour);
 }
 
+.sequence li.note-5,
 .sequence .note-5 li {
   background-color: var(--note-5-colour);
 }
 
+.sequence li.note-6,
 .sequence .note-6 li {
   background-color: var(--note-6-colour);
 }
 
+.sequence li.note-7,
 .sequence .note-7 li {
   background-color: var(--note-7-colour);
 }
 
+.sequence li.note-8,
 .sequence .note-8 li {
   background-color: var(--note-8-colour);
 }

@@ -18,7 +18,7 @@ var ui = {
     this.processForm();
   },
   processForm: function () {
-    sequencer.draw(this.$songData.value.trimEnd());
+    sequencer.draw(this.$songData.value);
   },
   
 };

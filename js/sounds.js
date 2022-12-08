@@ -1,0 +1,4 @@
+//Sounds
+var sounds = {
+  
+};

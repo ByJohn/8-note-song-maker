@@ -74,15 +74,18 @@ header h2:hover {
 }
 
 form {
+  display: flex;
   margin-bottom: 1em;
 }
 
 .song-data {
+  flex: 1;
   display: block;
   width: 100%;
+  
   padding: 0.8em;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 4px 0 0 4px;
   background: #fff;
   white-space: pre;
   overflow-wrap: normal;
@@ -90,6 +93,37 @@ form {
 
 .song-data:focus {
   outline: 1px solid #bbb;
+}
+
+.play-pause {
+  --text-colour: #666;
+  padding: 0.5em;
+  border: 1px solid #ddd;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  background-color: #fff;
+  color: var(--text-colour);
+}
+
+.play-pause:hover {
+  --text-colour: #fff;
+  background-color: #222;
+}
+
+.play-pause span {
+  display: block;
+}
+
+.play-pause .play {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7px 0 7px 14px;
+  border-color: transparent transparent transparent var(--text-colour);
+}
+
+.play-pause .pause {
+  display: none;
 }
 
 .sequence {

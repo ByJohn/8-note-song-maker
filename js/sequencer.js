@@ -18,30 +18,22 @@ var sequencer = {
       $row.innerHTML = '';
     });
   },
-  draw: function (lines) {
-    this.clear();
+  drawNote: function (note, parent) {
+    let el = document.createElement('li');
 
-    lines = lines.split("\n");
+    note = this.normaliseNote(line[column]);
 
-    if (lines.length > 1) {
-      this.drawPolyphonicLines(lines);
-      this.$sequence.classList.add('is-polyphonic');
-    } else {
-      this.drawMonophonicLine(lines[0]);
-      this.$sequence.classList.remove('is-polyphonic');
+    if (note) {
+      el.textContent = note;
+      el.classList.add('note-' + note);
+      el.dataset.play = note;
     }
+
+    parent.appendChild(el);
   },
   drawMonophonicLine: function (line) {
     for (let column = 0; column < line.length; column++) {
-      let note = this.normaliseNote(line[column]),
-          el = document.createElement('li');
-
-      if (note) {
-        el.textContent = note;
-        el.classList.add('note-' + note);
-      }
-
-      this.$monoNoteRow.appendChild(el);
+      this.drawNote(line[column], this.$monoNoteRow);
     }
   },
   drawPolyphonicLines: function (lines) {
@@ -74,10 +66,31 @@ var sequencer = {
       //For each note to add to this column
       for (let i in notesToAdd) {
         let addNote = notesToAdd[i],
-            note = parseInt(i) + 1;
+            note = parseInt(i) + 1,
+            el = document.createElement('li');
 
-        that.$polyNoteRows[i].innerHTML += '<li>' + (addNote ? note : '') + '</li>';
+        if (addNote) {
+          el.textContent = note;
+          el.classList.add('note-' + note);
+          el.dataset.play = note;
+        }
+
+        that.$polyNoteRows[i].appendChild(el); += '<li>' + (addNote ? note : '') + '</li>';
+        this.drawNote((addNote ? note : ''), this.$polyNoteRows);
       }
+    }
+  },
+  draw: function (lines) {
+    this.clear();
+
+    lines = lines.split("\n");
+
+    if (lines.length > 1) {
+      this.drawPolyphonicLines(lines);
+      this.$sequence.classList.add('is-polyphonic');
+    } else {
+      this.drawMonophonicLine(lines[0]);
+      this.$sequence.classList.remove('is-polyphonic');
     }
   },
 };

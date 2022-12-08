@@ -50,8 +50,6 @@ var sounds = {
 
     sound.index++;
     sound.index = sound.index < sound.num ? sound.index : 0;
-
-    sound.volume = 1; //Reset volume, ready for next sound
   },
   _playSound: function (id) {
     let audio = this._getSoundChannel(id);

@@ -36,16 +36,7 @@ var sequencer = {
 
     //For each character index (column) up to the last character of the longest line
     for (let column = 0; column < lines[longestLineIndex].length; column++) {
-        let notesToAddThisColumn = {
-        0: false,
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: false,
-        6: false,
-        7: false,
-      };
+        let notesToAdd = new Array(that.$polyNoteRows.length).fill(false); //Create a boolean array for the notes
 
       //For each line
       lines.forEach(function (line, row) {
@@ -54,16 +45,13 @@ var sequencer = {
           let note = that.normaliseNote(line[column]);
 
           if (note) {
-            notesToAddThisColumn[note - 1] = true;
+            notesToAdd[note - 1] = true;
           }
         }
       });
 
-      for (let i; i < 8; i++) {
-      }
-
-      for (let i in notesToAddThisColumn) {
-        let addNote = notesToAddThisColumn[i],
+      for (let i in notesToAdd) {
+        let addNote = notesToAdd[i],
             note = parseInt(i) + 1;
 
         that.$polyNoteRows[i].innerHTML += '<li>' + (addNote ? note : '') + '</li>';

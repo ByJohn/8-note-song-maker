@@ -6,3 +6,4 @@ Debounce
 Tempo control
 Preset songs
 Custom colours
+Numbers on mobile keyboard

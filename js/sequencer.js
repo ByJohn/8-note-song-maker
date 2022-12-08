@@ -1,7 +1,8 @@
 //Sequencer
 var sequencer = {
   $sequence: document.getElementById('sequence'),
-  $noteRows: document.querySelectorAll('.note-row ul'),
+  $monoNoteRow: document.querySelectorAll('.monophonic .note-row ul')[0],
+  $polyNoteRows: document.querySelectorAll('.polyphonic .note-row ul'),
   init: function () {},
   normaliseNote: function (note) {
     note = parseInt(note);
@@ -11,7 +12,9 @@ var sequencer = {
     return note;
   },
   clear: function () {
-    this.$noteRows.forEach(function ($row) {
+    this.$monoNoteRow.innerHTML = '';
+
+    this.$polyNoteRows.forEach(function ($row) {
       $row.innerHTML = '';
     });
   },
@@ -63,8 +66,8 @@ var sequencer = {
         let addNote = notesToAddThisColumn[i],
             note = parseInt(i) + 1;
 
-        that.$noteRows[i].innerHTML += '<li>' + (addNote ? note : '') + '</li>';
-        // that.$noteRows[i].innerHTML += '<li>.</li>';
+        that.$polyNoteRows[i].innerHTML += '<li>' + (addNote ? note : '') + '</li>';
+        // that.$polyNoteRows[i].innerHTML += '<li>.</li>';
       }
     }
   },

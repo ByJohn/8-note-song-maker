@@ -24,6 +24,16 @@ var sequencer = {
     lines = lines.trimEnd();
     lines = lines.split("\n");
 
+    if (lines.length > 1) {
+      this.drawPolyphonicLines(lines);
+    } else {
+      this.drawMonophonicLine(lines[0]);
+    }
+  },
+  drawMonophonicLine: function (line) {
+    
+  },
+  drawPolyphonicLines: function (lines) {
     let that = this,
         longestLineIndex = 0;
 

@@ -36,7 +36,7 @@ var sequencer = {
 
     //For each character index (column) up to the last character of the longest line
     for (let column = 0; column < lines[longestLineIndex].length; column++) {
-        let notesToAdd = new Array(that.$polyNoteRows.length).fill(false); //Create a boolean array for the notes
+      let notesToAdd = new Array(that.$polyNoteRows.length).fill(false); //Create a boolean array for the notes
 
       //For each line
       lines.forEach(function (line, row) {
@@ -50,6 +50,7 @@ var sequencer = {
         }
       });
 
+      //For each note to add to this column
       for (let i in notesToAdd) {
         let addNote = notesToAdd[i],
             note = parseInt(i) + 1;

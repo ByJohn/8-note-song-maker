@@ -1,4 +1,3 @@
-Use viewport scrollbar
 Revearse row order?
 Note preview
 Play/pause

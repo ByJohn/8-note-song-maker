@@ -124,6 +124,10 @@ form {
   );
 }
 
+.sequence.is-polyphonic .monophonic {
+  display: none;
+}
+
 .sequence .polyphonic {
   display: inline-flex;
   flex-direction: column;

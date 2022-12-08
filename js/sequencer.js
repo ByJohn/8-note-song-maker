@@ -26,12 +26,24 @@ var sequencer = {
 
     if (lines.length > 1) {
       this.drawPolyphonicLines(lines);
+      this.$sequence.classList.add('is-polyphonic');
     } else {
       this.drawMonophonicLine(lines[0]);
+      this.$sequence.classList.remove('is-polyphonic');
     }
   },
   drawMonophonicLine: function (line) {
-    
+    for (let column = 0; column < line.length; column++) {
+      let note = this.normaliseNote(line[column]),
+          el = document.createElement('li');
+
+      if (note) {
+        el.textContent = note;
+        el.classList.add('note-' + note);
+      }
+
+      this.$monoNoteRow.appendChild(el);
+    }
   },
   drawPolyphonicLines: function (lines) {
     let that = this,
@@ -66,7 +78,6 @@ var sequencer = {
             note = parseInt(i) + 1;
 
         that.$polyNoteRows[i].innerHTML += '<li>' + (addNote ? note : '') + '</li>';
-        // that.$polyNoteRows[i].innerHTML += '<li>.</li>';
       }
     }
   },

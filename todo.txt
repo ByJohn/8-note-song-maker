@@ -1,5 +1,4 @@
-Revearse row order?
-Note preview
+Note sound preview
 Play/pause
 Printable
 Sharable

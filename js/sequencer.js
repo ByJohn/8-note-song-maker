@@ -2,7 +2,7 @@
 var sequencer = {
   $sequence: document.getElementById('sequence'),
   $monoNoteRow: document.querySelectorAll('.monophonic .note-row ul')[0],
-  $polyNoteRows: document.querySelectorAll('.polyphonic .note-row ul'),
+  $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
   init: function () {},
   normaliseNote: function (note) {
     note = parseInt(note);

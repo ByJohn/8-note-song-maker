@@ -1,4 +1,4 @@
-Monophonic display
+Use viewport scrollbar
 Play/pause
 Printable
 Sharable

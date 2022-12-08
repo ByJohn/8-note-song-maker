@@ -88,6 +88,10 @@ form {
   overflow-wrap: normal;
 }
 
+.song-data:focus {
+  outline: 1px solid #bbb;
+}
+
 .sequence {
   --unit: 20px;
   --padding: var(--unit);

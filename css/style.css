@@ -95,7 +95,8 @@ form {
   --note-gap: calc(var(--unit) / 2);
   --line-width: 2px;
   overflow-x: auto;
-  border-radius: 30px 30px 10px 10px;
+  overflow-y: hidden;
+  flex: 1 0 max-content;
   background-color: #fff;
   text-align: center;
 }

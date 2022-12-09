@@ -150,6 +150,7 @@ var sequencer = {
       return;
     }
 
+    //Play all notes
     this.song[this.songStep].forEach(function (note) {
       sounds.play(note);
     });

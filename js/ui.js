@@ -17,7 +17,7 @@ var ui = {
   formSubmitted: function (e) {
     e.preventDefault();
 
-    this.processForm();
+    sequencer.togglePlay();
   },
   processForm: function () {
     sequencer.draw(this.$songData.value);

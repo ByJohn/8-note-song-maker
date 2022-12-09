@@ -110,6 +110,7 @@ form {
   background-color: #222;
 }
 
+.playing .play-pause .pause,
 .play-pause span {
   display: block;
 }
@@ -122,8 +123,15 @@ form {
   border-color: transparent transparent transparent var(--text-colour);
 }
 
+.playing .play-pause .play {
+  display: none;
+}
+
 .play-pause .pause {
   display: none;
+  width: 14px;
+  height: 14px;
+  background-color: var(--text-colour);
 }
 
 .sequence {

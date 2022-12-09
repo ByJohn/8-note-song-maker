@@ -85,4 +85,7 @@ var sequencer = {
       this.$sequence.classList.remove('is-polyphonic');
     }
   },
+  togglePlay: function () {
+    console.log('toggle play');
+  },
 };

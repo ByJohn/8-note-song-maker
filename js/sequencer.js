@@ -3,6 +3,7 @@ var sequencer = {
   $sequence: document.getElementById('sequence'),
   $monoNoteRow: document.querySelectorAll('.monophonic .note-row ul')[0],
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
+  notes: [], 
   playing: false,
   bpm: 60,
   interval: null,
@@ -80,6 +81,8 @@ var sequencer = {
     }
   },
   draw: function (lines) {
+    
+
     this.clear();
 
     lines = lines.split("\n");

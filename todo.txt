@@ -1,4 +1,3 @@
-Textarea form submit keyboard shortcut
 Play/pause
 Printable
 Sharable

@@ -3,7 +3,7 @@ var sequencer = {
   $sequence: document.getElementById('sequence'),
   $monoNoteRow: document.querySelectorAll('.monophonic .note-row ul')[0],
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
-  notes: [], 
+  song: [], 
   playing: false,
   bpm: 60,
   interval: null,
@@ -21,31 +21,31 @@ var sequencer = {
   //Notes
   parseLines: function (lines) {
     let that = this,
-        notes = [];
+        song = [];
     
     lines = lines.split("\n");
 
     lines.forEach(function (line, row) {
       for (let column = 0; column < line.length; column++) {
         //If the column does not yet have an array
-        if (typeof notes[column] === 'undefined') {
-          notes[column] = [];
+        if (typeof song[column] === 'undefined') {
+          song[column] = [];
         }
 
         let note = that.normaliseNote(line[column]);
 
-        if (note !== null && !notes[column].includes(note)) {
-          notes[column].push(note);
+        if (note !== null && !song[column].includes(note)) {
+          song[column].push(note);
         }
       }
     });
 
-    return notes;
+    return song;
   },
   set: function(lines) {
-    this.notes = this.parseLines(lines);
+    this.song = this.parseLines(lines);
 
-    this.draw(this.notes);
+    this.draw(this.song);
   },
 
   //Drawing
@@ -58,8 +58,6 @@ var sequencer = {
   },
   drawNote: function (note, parent) {
     let el = document.createElement('li');
-
-    note = this.normaliseNote(note);
 
     if (note) {
       el.textContent = note;
@@ -74,11 +72,17 @@ var sequencer = {
       this.drawNote(line[column], this.$monoNoteRow);
     }
   },
-  drawPolyphonic: function (notes) {
+  drawPolyphonic: function (song) {
     let that = this;
     
-    notes.forEach(function (step, i) {
+    song.forEach(function (notes, i) {
       
+
+      notes.forEach
+
+      that.$polyNoteRows.forEach(function ($row) {
+        
+      });
     });
 
     //For each character index (column) up to the last character of the longest line
@@ -106,18 +110,18 @@ var sequencer = {
       }
     }
   },
-  draw: function (notes) {
+  draw: function (song) {
     this.clear();
 
-    let isPolyphonic = notes.some(function (step) {
-      return step.length > 1;
+    let isPolyphonic = song.some(function (notes) {
+      return notes.length > 1;
     });
 
     if (isPolyphonic) {
-      this.drawPolyphonic(notes);
+      this.drawPolyphonic(song);
       this.$sequence.classList.add('is-polyphonic');
     } else {
-      this.drawMonophonic(notes);
+      this.drawMonophonic(song);
       this.$sequence.classList.remove('is-polyphonic');
     }
   },

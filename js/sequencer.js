@@ -4,6 +4,8 @@ var sequencer = {
   $monoNoteRow: document.querySelectorAll('.monophonic .note-row ul')[0],
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
   playing: false,
+  bpm: 60,
+  interval: null,
   init: function () {},
   normaliseNote: function (note) {
     note = parseInt(note);

@@ -45,6 +45,8 @@ var sequencer = {
   set: function(lines) {
     this.notes = this.parseLines(lines);
 
+    console.log(this.notes);
+
     this.draw(this.notes);
   },
 
@@ -69,16 +71,20 @@ var sequencer = {
 
     parent.appendChild(el);
   },
-  drawMonophonic: function (line) {
+  drawMonophonicLine: function (line) {
     for (let column = 0; column < line.length; column++) {
       this.drawNote(line[column], this.$monoNoteRow);
     }
   },
-  drawPolyphonic: function (notes) {
-    let that = this;
-    
-    notes.forEach(function (step, i) {
-      
+  drawPolyphonicLines: function (lines) {
+    let that = this,
+        longestLineIndex = 0;
+
+    //Find the longest line
+    lines.forEach(function (line, i) {
+      if (line.length > lines[longestLineIndex].length) {
+        longestLineIndex = i;
+      }
     });
 
     //For each character index (column) up to the last character of the longest line
@@ -106,18 +112,16 @@ var sequencer = {
       }
     }
   },
-  draw: function (notes) {
+  draw: function (lines) {
     this.clear();
 
-    let isPolyphonic = notes.some(function (step) {
-      return step.length > 1;
-    });
+    lines = lines.split("\n");
 
-    if (isPolyphonic) {
-      this.drawPolyphonic(notes);
+    if (lines.length > 1) {
+      this.drawPolyphonicLines(lines);
       this.$sequence.classList.add('is-polyphonic');
     } else {
-      this.drawMonophonic(notes);
+      this.drawMonophonicLine(lines[0]);
       this.$sequence.classList.remove('is-polyphonic');
     }
   },

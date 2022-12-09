@@ -76,15 +76,22 @@ var sequencer = {
     let that = this;
     
     song.forEach(function (notes, i) {
-      
+      let newEls = [];
 
-      notes.forEach
+      that.$polyNoteRows.forEach(function (row) {
+        let el = document.createElement('li');
 
-      that.$polyNoteRows.forEach(function ($row) {
+        newEls.push(el);
+
+        row.appendChild(el);
+      });
+
+      notes.forEach(function (note) {
         
       });
     });
 
+    /*
     //For each character index (column) up to the last character of the longest line
     for (let column = 0; column < lines[longestLineIndex].length; column++) {
       let notesToAdd = new Array(that.$polyNoteRows.length).fill(false); //Create a boolean array for the notes
@@ -109,6 +116,7 @@ var sequencer = {
         that.drawNote(note, that.$polyNoteRows[i]);
       }
     }
+    */
   },
   draw: function (song) {
     this.clear();

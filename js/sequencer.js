@@ -4,13 +4,16 @@ var sequencer = {
   $monoNoteRows: document.querySelectorAll('.monophonic .note-row ul'), //Monophonic rows (only one, but still an array for consistany)
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
   forcedPolyphonic: false,
-  song: [], //An array notes/nulls for each step (song tick). Notes are not duplicated per step
+  song: [], //An array unique notes for each step (song tick)
   playing: false,
   bpm: 60,
   interval: null,
 
   //General
   init: function () {},
+  forcePolyphonic: function (polyphonic) {
+    this.forcedPolyphonic = polyphonic;
+  },
   normaliseNote: function (note) {
     note = parseInt(note);
 
@@ -35,7 +38,7 @@ var sequencer = {
 
         let note = that.normaliseNote(line[column]);
 
-        if (!song[column].includes(note)) {
+        if (note !== null && !song[column].includes(note)) {
           song[column].push(note);
         }
       }
@@ -59,51 +62,20 @@ var sequencer = {
       $row.innerHTML = '';
     });
   },
-  drawMonophonic: function (line) {
-    for (let column = 0; column < line.length; column++) {
-      this.drawNote(line[column], this.$monoNoteRow);
-    }
-  },
-  drawPolyphonic: function (song) {
-    
-
-    /*
-    //For each character index (column) up to the last character of the longest line
-    for (let column = 0; column < lines[longestLineIndex].length; column++) {
-      let notesToAdd = new Array(that.$polyNoteRows.length).fill(false); //Create a boolean array for the notes
-
-      //For each line
-      lines.forEach(function (line, row) {
-        //If the current column in the current line exists and is valid
-        if (typeof line[column] !== 'undefined') {
-          let note = that.normaliseNote(line[column]);
-
-          if (note) {
-            notesToAdd[note - 1] = true;
-          }
-        }
-      });
-
-      //For each note to add to this column
-      for (let i in notesToAdd) {
-        let addNote = notesToAdd[i],
-            note = addNote ? parseInt(i) + 1 : null;
-
-        that.drawNote(note, that.$polyNoteRows[i]);
-      }
-    }
-    */
-  },
   draw: function (song) {
     console.log(song);
     this.clear();
 
     let that = this,
+        isPolyphonic = this.forcedPolyphonic,
         $rows = this.$monoNoteRows;
 
-    let isPolyphonic = song.some(function (notes) {
-      return notes.length > 1;
-    });
+    //If not forced to be polyphonic, check the song
+    if (!isPolyphonic) {
+      isPolyphonic = song.some(function (notes) {
+        return notes.length > 1;
+      });
+    }
 
     if (isPolyphonic) {
       $rows = this.$polyNoteRows;

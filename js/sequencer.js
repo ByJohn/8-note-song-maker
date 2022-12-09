@@ -1,7 +1,7 @@
 //Sequencer
 var sequencer = {
   $sequence: document.getElementById('sequence'),
-  $monoNoteRow: document.querySelectorAll('.monophonic .note-row ul')[0],
+  $monoNoteRows: document.querySelectorAll('.monophonic .note-row ul'), //Monophonic rows (only one, but still an array for consistany)
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
   song: [], 
   playing: false,
@@ -50,7 +50,9 @@ var sequencer = {
 
   //Drawing
   clear: function () {
-    this.$monoNoteRow.innerHTML = '';
+    this.$monoNoteRows.forEach(function ($row) {
+      $row.innerHTML = '';
+    });
 
     this.$polyNoteRows.forEach(function ($row) {
       $row.innerHTML = '';
@@ -73,23 +75,7 @@ var sequencer = {
     }
   },
   drawPolyphonic: function (song) {
-    let that = this;
     
-    song.forEach(function (notes, i) {
-      let newEls = [];
-
-      that.$polyNoteRows.forEach(function (row) {
-        let el = document.createElement('li');
-
-        newEls.push(el);
-
-        row.appendChild(el);
-      });
-
-      notes.forEach(function (note) {
-        
-      });
-    });
 
     /*
     //For each character index (column) up to the last character of the longest line
@@ -121,17 +107,43 @@ var sequencer = {
   draw: function (song) {
     this.clear();
 
+    let that = this,
+        $rows = this.$monoNoteRows;
+
     let isPolyphonic = song.some(function (notes) {
       return notes.length > 1;
     });
 
     if (isPolyphonic) {
-      this.drawPolyphonic(song);
+      $rows = this.$polyNoteRows;
       this.$sequence.classList.add('is-polyphonic');
     } else {
-      this.drawMonophonic(song);
       this.$sequence.classList.remove('is-polyphonic');
     }
+
+    song.forEach(function (notes, i) {
+      let newEls = [];
+
+      $rows.forEach(function (row) {
+        let el = document.createElement('li');
+
+        newEls.push(el);
+
+        row.appendChild(el);
+      });
+
+      notes.forEach(function (note) {
+        if (isPolyphonic) {
+          var el = newEls[note - 1];
+        } else {
+          var el = newEls[0];
+        }
+
+        el.textContent = note;
+        el.classList.add('note-' + note);
+        el.dataset.play = note;
+      });
+    });
   },
 
   //Playback

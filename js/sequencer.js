@@ -18,6 +18,24 @@ var sequencer = {
     return note;
   },
 
+  //Notes
+  parseLines: function (lines) {
+    let notes = [];
+    
+    lines = lines.split("\n");
+
+    if (lines.length < 2) {
+      
+    }
+
+    return notes;
+  },
+  set: function(lines) {
+    this.notes = this.parseLines(lines);
+
+    this.draw(this.notes);
+  },
+
   //Drawing
   clear: function () {
     this.$monoNoteRow.innerHTML = '';
@@ -81,8 +99,6 @@ var sequencer = {
     }
   },
   draw: function (lines) {
-    
-
     this.clear();
 
     lines = lines.split("\n");

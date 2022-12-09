@@ -28,7 +28,7 @@ var ui = {
     }
   },
   processForm: function () {
-    sequencer.draw(this.$songData.value);
+    sequencer.set(this.$songData.value);
   },
   maybePlaySoundOnClick: function (e) {
     if (typeof e.target.dataset.play !== 'undefined') {

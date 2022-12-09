@@ -136,7 +136,7 @@ var sequencer = {
     if (!this.playing) return false;
 
     this.playing = false;
-    this.songStep = 0;
+    this.resetStep();
     document.body.classList.remove('playing');
     window.clearTimeout(this.interval);
   },
@@ -155,10 +155,16 @@ var sequencer = {
       sounds.play(note);
     });
 
+    this.nextStep();
+  },
+  nextStep: function () {
     this.songStep++;
 
     if (this.songStep >= this.song.length) {
-      this.songStep = 0;
+      this.resetStep();
     }
+  },
+  resetStep: function () {
+    this.songStep = 0;
   },
 };

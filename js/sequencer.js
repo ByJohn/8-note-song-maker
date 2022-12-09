@@ -3,11 +3,12 @@ var sequencer = {
   $sequence: document.getElementById('sequence'),
   $monoNoteRows: document.querySelectorAll('.monophonic .note-row ul'), //Monophonic rows (only one, but still an array for consistany)
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
+  $needle: document.getElementById('play-needle'),
   forcedPolyphonic: false,
   song: [], //An array unique notes for each step (song tick)
   songStep: 0, //Song playback iterator
   playing: false,
-  bpm: 60,
+  bpm: 120,
   interval: null,
 
   //General
@@ -142,16 +143,15 @@ var sequencer = {
   tick: function () {
     this.interval = window.setTimeout(this.tick.bind(this), this.getIntervalMilliseconds());
 
-    console.log('tick');
-
-    if (typeof this.song[songStep] === 'undefined') {
+    //If the current song step does not exist, stop playing
+    if (typeof this.song[this.songStep] === 'undefined') {
       this.stop();
 
       return;
     }
 
-    this.song[songStep].forEach(function (notes) {
-      
+    this.song[this.songStep].forEach(function (note) {
+      sounds.play(note);
     });
 
     this.songStep++;

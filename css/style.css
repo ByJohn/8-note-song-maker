@@ -140,6 +140,7 @@ form {
   --note-width: calc(var(--unit) * 2);
   --note-gap: calc(var(--unit) / 2);
   --line-width: 2px;
+  --left-start: calc(((var(--padding) * 2) + var(--note-gap) + (var(--note-width) / 2)) - (var(--line-width) / 2));
   overflow-x: auto;
   overflow-y: hidden;
   flex: 1 0 max-content;
@@ -158,12 +159,11 @@ form {
 }
 
 .sequence-inner:before {
-  --left: calc(((var(--padding) * 2) + var(--note-gap) + (var(--note-width) / 2)) - (var(--line-width) / 2));
   content: '';
   position: absolute;
   top: 0;
-  left: var(--left);
-  width: calc(100% - var(--left) - 1px);
+  left: var(--left-start);
+  width: calc(100% - var(--left-start) - 1px);
   height: 100%;
   background: repeating-linear-gradient(
     90deg,
@@ -172,6 +172,20 @@ form {
     #fff var(--line-width),
     #fff calc(var(--note-width) + var(--note-gap))
   );
+}
+
+.sequence .play-needle {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: var(--left-start);
+  width: var(--line-width);
+  height: 100%;
+  background-color: #222;
+}
+
+.playing .sequence .play-needle {
+  display: block;
 }
 
 .sequence.is-polyphonic .monophonic,

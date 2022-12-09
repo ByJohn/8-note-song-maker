@@ -6,6 +6,8 @@ var sequencer = {
   playing: false,
   bpm: 60,
   interval: null,
+
+  //General
   init: function () {},
   normaliseNote: function (note) {
     note = parseInt(note);
@@ -14,6 +16,8 @@ var sequencer = {
 
     return note;
   },
+
+  //Drawing
   clear: function () {
     this.$monoNoteRow.innerHTML = '';
 
@@ -88,18 +92,31 @@ var sequencer = {
       this.$sequence.classList.remove('is-polyphonic');
     }
   },
+
+  //Playback
+  getIntervalMilliseconds: function () {
+    return (1 / (this.bpm / 60) * 1000);
+  },
   togglePlay: function () {
     if (this.playing) this.stop();
     else this.play();
   },
   play: function () {
+    if (this.playing) return false;
+
     this.playing = true;
     document.body.classList.add('playing');
-    this.interval = window.setTimeout(this.tick.bind(this));
+    this.tick();
   },
   stop: function () {
+    if (!this.playing) return false;
+
     this.playing = false;
     document.body.classList.remove('playing');
+    window.clearTimeout(this.interval);
   },
-  tick: function () {},
+  tick: function () {
+    this.interval = window.setTimeout(this.tick.bind(this), this.getIntervalMilliseconds());
+    console.log('tick');
+  },
 };

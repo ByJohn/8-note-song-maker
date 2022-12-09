@@ -3,6 +3,7 @@ var sequencer = {
   $sequence: document.getElementById('sequence'),
   $monoNoteRow: document.querySelectorAll('.monophonic .note-row ul')[0],
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
+  playing: false,
   init: function () {},
   normaliseNote: function (note) {
     note = parseInt(note);
@@ -86,6 +87,15 @@ var sequencer = {
     }
   },
   togglePlay: function () {
-    console.log('toggle play');
+    if (this.playing) this.stop();
+    else this.play();
+  },
+  play: function () {
+    this.playing = true;
+    document.body.classList.add('playing');
+  },
+  stop: function () {
+    this.playing = false;
+    document.body.classList.remove('playing');
   },
 };

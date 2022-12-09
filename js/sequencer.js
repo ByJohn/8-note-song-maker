@@ -5,6 +5,7 @@ var sequencer = {
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
   forcedPolyphonic: false,
   song: [], //An array unique notes for each step (song tick)
+  songStep: 0, //Song playback iterator
   playing: false,
   bpm: 60,
   interval: null,
@@ -46,7 +47,7 @@ var sequencer = {
 
     return song;
   },
-  setSong: function(lines) {
+  applySong: function(lines) {
     this.song = this.parseLines(lines);
 
     this.draw(this.song);
@@ -63,14 +64,13 @@ var sequencer = {
     });
   },
   draw: function (song) {
-    console.log(song);
     this.clear();
 
     let that = this,
         isPolyphonic = this.forcedPolyphonic,
-        $rows = this.$monoNoteRows;
+        $rows = this.$monoNoteRows; //Use monophonic rows
 
-    //If not forced to be polyphonic, check the song
+    //If not forced to be polyphonic, check if the song is
     if (!isPolyphonic) {
       isPolyphonic = song.some(function (notes) {
         return notes.length > 1;
@@ -78,15 +78,17 @@ var sequencer = {
     }
 
     if (isPolyphonic) {
-      $rows = this.$polyNoteRows;
+      $rows = this.$polyNoteRows; //Use polyphonic rows
       this.$sequence.classList.add('is-polyphonic');
     } else {
       this.$sequence.classList.remove('is-polyphonic');
     }
 
+    //For each step in the song
     song.forEach(function (notes, i) {
       let newEls = [];
 
+      //Create empty note element for each note row
       $rows.forEach(function (row) {
         let el = document.createElement('li');
 
@@ -95,15 +97,18 @@ var sequencer = {
         row.appendChild(el);
       });
 
+      //For each note in the song's current step
       notes.forEach(function (note) {
         if (!note) return;
 
+        //Find the empty note element
         if (isPolyphonic) {
           var el = newEls[note - 1];
         } else {
           var el = newEls[0];
         }
 
+        //Add note data to the note element
         el.textContent = note;
         el.classList.add('note-' + note);
         el.dataset.play = note;
@@ -130,11 +135,29 @@ var sequencer = {
     if (!this.playing) return false;
 
     this.playing = false;
+    this.songStep = 0;
     document.body.classList.remove('playing');
     window.clearTimeout(this.interval);
   },
   tick: function () {
     this.interval = window.setTimeout(this.tick.bind(this), this.getIntervalMilliseconds());
+
     console.log('tick');
+
+    if (typeof this.song[songStep] === 'undefined') {
+      this.stop();
+
+      return;
+    }
+
+    this.song[songStep].forEach(function (notes) {
+      
+    });
+
+    this.songStep++;
+
+    if (this.songStep >= this.song.length) {
+      this.songStep = 0;
+    }
   },
 };

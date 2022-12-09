@@ -28,7 +28,10 @@ var ui = {
     }
   },
   processForm: function () {
-    sequencer.set(this.$songData.value);
+    let lines = this.$songData.value;
+
+    sequencer.forcePolyphonic(lines.split("\n").length > 1); //Split sequence onto multiple lines if the string has mu
+    sequencer.setSong(lines);
   },
   maybePlaySoundOnClick: function (e) {
     if (typeof e.target.dataset.play !== 'undefined') {

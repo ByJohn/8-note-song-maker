@@ -46,7 +46,7 @@ var sequencer = {
 
     return song;
   },
-  set: function(lines) {
+  setSong: function(lines) {
     this.song = this.parseLines(lines);
 
     this.draw(this.song);

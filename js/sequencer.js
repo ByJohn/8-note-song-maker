@@ -20,18 +20,24 @@ var sequencer = {
 
   //Notes
   parseLines: function (lines) {
-    let notes = [];
+    let that = this,
+        notes = [];
     
     lines = lines.split("\n");
 
     lines.forEach(function (line, row) {
-      let noteRow = [];
-
       for (let column = 0; column < line.length; column++) {
-        
+        //If the column does not yet have an array
+        if (typeof notes[column] === 'undefined') {
+          notes[column] = [];
+        }
+
+        let note = that.normaliseNote(line[column]);
+
+        if (note !== null && !notes[column].includes(note)) {
+          notes[column].push(note);
+        }
       }
-      
-      notes.push(noteRow)
     });
 
     return notes;

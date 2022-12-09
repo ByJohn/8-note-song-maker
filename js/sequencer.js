@@ -95,9 +95,11 @@ var sequencer = {
   play: function () {
     this.playing = true;
     document.body.classList.add('playing');
+    this.interval = window.setTimeout(this.tick.bind(this));
   },
   stop: function () {
     this.playing = false;
     document.body.classList.remove('playing');
   },
+  tick: function () {},
 };

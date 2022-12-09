@@ -24,14 +24,22 @@ var sequencer = {
     
     lines = lines.split("\n");
 
-    if (lines.length < 2) {
+    lines.forEach(function (line, row) {
+      let noteRow = [];
+
+      for (let column = 0; column < line.length; column++) {
+        
+      }
       
-    }
+      notes.push(noteRow)
+    });
 
     return notes;
   },
   set: function(lines) {
     this.notes = this.parseLines(lines);
+
+    console.log(this.notes);
 
     this.draw(this.notes);
   },

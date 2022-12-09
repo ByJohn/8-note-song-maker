@@ -3,7 +3,7 @@ var sequencer = {
   $sequence: document.getElementById('sequence'),
   $monoNoteRows: document.querySelectorAll('.monophonic .note-row ul'), //Monophonic rows (only one, but still an array for consistany)
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
-  song: [], 
+  song: [], //An array notes/nulls for each step (song tick). Notes are not duplicated per step
   playing: false,
   bpm: 60,
   interval: null,
@@ -34,7 +34,7 @@ var sequencer = {
 
         let note = that.normaliseNote(line[column]);
 
-        if (note !== null && !song[column].includes(note)) {
+        if (!song[column].includes(note)) {
           song[column].push(note);
         }
       }
@@ -105,6 +105,7 @@ var sequencer = {
     */
   },
   draw: function (song) {
+    console.log(song);
     this.clear();
 
     let that = this,
@@ -133,6 +134,8 @@ var sequencer = {
       });
 
       notes.forEach(function (note) {
+        if (!note) return;
+
         if (isPolyphonic) {
           var el = newEls[note - 1];
         } else {

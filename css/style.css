@@ -188,6 +188,13 @@ form {
   display: block;
 }
 
+.sequence .play-needle .note-width-reference {
+  opacity: 0;
+  position: absolute;
+  width: calc(var(--note-width) + var(--note-gap));
+  height: calc(var(--note-width) + var(--note-gap));
+}
+
 .sequence.is-polyphonic .monophonic,
 .sequence .polyphonic {
   display: none;

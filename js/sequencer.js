@@ -4,6 +4,7 @@ var sequencer = {
   $monoNoteRows: document.querySelectorAll('.monophonic .note-row ul'), //Monophonic rows (only one, but still an array for consistany)
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
   $needle: document.getElementById('play-needle'),
+  needleMoveWidth: 0,
   forcedPolyphonic: false,
   song: [], //An array unique notes for each step (song tick)
   songStep: 0, //Song playback iterator
@@ -12,7 +13,12 @@ var sequencer = {
   interval: null,
 
   //General
-  init: function () {},
+  init: function () {
+    this.needleMoveWidth = document.getElementById('note-width-reference').offsetWidth;
+
+    //Here
+    console.log(document.getElementById('note-width-reference'), this.needleMoveWidth);
+  },
   forcePolyphonic: function (polyphonic) {
     this.forcedPolyphonic = polyphonic;
   },

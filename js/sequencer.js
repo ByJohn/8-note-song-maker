@@ -13,11 +13,9 @@ var sequencer = {
   interval: null,
   ticker: {
     ticking: false,
-    fps: 1,
+    fps: 10,
     fpsInterval: null,
-    now: null,
     then: null,
-    elapsed: null,
   },
 
   //General
@@ -203,12 +201,12 @@ var sequencer = {
 
     requestAnimationFrame(this.tick.bind(this));
 
-    this.ticker.now = Date.now();
-    this.ticker.elapsed = this.ticker.now - this.ticker.then;
+    let now = Date.now(),
+        elapsed = now - this.ticker.then;
 
     //If it is the first frame or enough time has elapsed
-    if (this.ticker.startTime === this.ticker.now || this.ticker.elapsed > this.ticker.fpsInterval) {
-      this.ticker.then = this.ticker.now - (this.ticker.elapsed % this.ticker.fpsInterval);
+    if (this.ticker.startTime === now || elapsed > this.ticker.fpsInterval) {
+      this.ticker.then = now - (elapsed % this.ticker.fpsInterval);
 
       console.log('tick');
     }

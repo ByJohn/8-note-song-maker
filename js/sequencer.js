@@ -16,7 +16,7 @@ var sequencer = {
   interval: null,
   ticker: {
     ticking: false,
-    fps: 30,
+    fps: 4,
     fpsInterval: null,
     then: null,
   },

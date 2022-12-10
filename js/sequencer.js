@@ -16,7 +16,7 @@ var sequencer = {
   interval: null,
   ticker: {
     ticking: false,
-    fps: 10,
+    fps: 30,
     fpsInterval: null,
     then: null,
   },
@@ -189,10 +189,10 @@ var sequencer = {
   positionNeedleAtStep: function (step) {
     this.positionNeedle(this.needle.moveWidth * step);
   },
-  panNeedleAlong: function () {
-    let extraLeft = this.needle.moveWidth / this.getIntervalMilliseconds();
+  panNeedleAlong: function (elapsed) {
+    let extraLeft = (this.getIntervalMilliseconds() * (elapsed / 1000)) / this.needle.moveWidth;
 
-  console.log(extraLeft);
+    console.log(this.getIntervalMilliseconds(), extraLeft);
 
     this.positionNeedle(this.needle.left + extraLeft);
   },
@@ -226,7 +226,7 @@ var sequencer = {
     if (this.ticker.startTime === now || elapsed > this.ticker.fpsInterval) {
       this.ticker.then = now - (elapsed % this.ticker.fpsInterval);
 
-      this.panNeedleAlong();
+      this.panNeedleAlong(elapsed);
       this.updateNeedle();
     }
   },

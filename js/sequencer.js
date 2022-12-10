@@ -3,8 +3,11 @@ var sequencer = {
   $sequence: document.getElementById('sequence'),
   $monoNoteRows: document.querySelectorAll('.monophonic .note-row ul'), //Monophonic rows (only one, but still an array for consistany)
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
-  $needle: document.getElementById('play-needle'),
-  needleMoveWidth: 0,
+  needle: {
+    $el: document.getElementById('play-needle'),
+    moveWidth: 0,
+    left: 0,
+  },
   forcedPolyphonic: false,
   song: [], //An array unique notes for each step (song tick)
   songStep: 0, //Song playback iterator
@@ -20,7 +23,7 @@ var sequencer = {
 
   //General
   init: function () {
-    this.needleMoveWidth = document.getElementById('needle-spacing-reference').offsetWidth;
+    this.needle.moveWidth = document.getElementById('needle-spacing-reference').offsetWidth;
   },
   forcePolyphonic: function (polyphonic) {
     this.forcedPolyphonic = polyphonic;
@@ -181,10 +184,12 @@ var sequencer = {
     this.songStep = 0;
   },
   positionNeedle: function () {
-    let left = this.needleMoveWidth * this.songStep;
-    this.$needle.style.transform = 'translateX(' + left + 'px)';
+    this.needle.left = this.needle.moveWidth * this.songStep;
+    this.needle.$el.style.transform = 'translateX(' + this.needle + 'px)';
   },
-  updateNeedle: function () {},
+  updateNeedle: function () {
+    
+  },
 
   //Ticker
   startTicker: function () {
@@ -212,7 +217,7 @@ var sequencer = {
     if (this.ticker.startTime === now || elapsed > this.ticker.fpsInterval) {
       this.ticker.then = now - (elapsed % this.ticker.fpsInterval);
 
-      console.log('tick');
+      this.updateNeedle();
     }
   },
 };

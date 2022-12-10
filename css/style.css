@@ -191,7 +191,7 @@ form {
   left: var(--left-start);
   width: var(--line-width);
   height: 100%;
-  background-color: #222;
+  background-color: #666;
 }
 
 .playing .sequence .play-needle {

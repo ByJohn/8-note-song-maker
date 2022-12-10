@@ -181,7 +181,8 @@ var sequencer = {
     this.songStep = 0;
   },
   positionNeedle: function () {
-    this.$needle
+    let left = this.needleMoveWidth * this.songStep;
+    this.$needle.style.transform = 'translateX(' + left + 'px)';
   },
   updateNeedle: function () {},
 

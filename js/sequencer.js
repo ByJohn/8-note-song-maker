@@ -187,7 +187,7 @@ var sequencer = {
     this.needle.left = this.needle.moveWidth * this.songStep;
   },
   updateNeedle: function () {
-    this.needle.$el.style.transform = 'translateX(' + this.needle + 'px)';
+    this.needle.$el.style.transform = 'translateX(' + this.needle.left + 'px)';
   },
 
   //Ticker

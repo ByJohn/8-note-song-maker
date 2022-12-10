@@ -136,7 +136,7 @@ var sequencer = {
 
     this.playing = true;
     document.body.classList.add('playing');
-    this.tick();
+    this.step();
   },
   stop: function () {
     if (!this.playing) return false;
@@ -146,8 +146,8 @@ var sequencer = {
     document.body.classList.remove('playing');
     window.clearTimeout(this.interval);
   },
-  tick: function () {
-    this.interval = window.setTimeout(this.tick.bind(this), this.getIntervalMilliseconds());
+  step: function () {
+    this.interval = window.setTimeout(this.step.bind(this), this.getIntervalMilliseconds());
 
     //If the current song step does not exist, stop playing
     if (typeof this.song[this.songStep] === 'undefined') {

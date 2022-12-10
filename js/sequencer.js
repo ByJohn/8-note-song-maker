@@ -164,7 +164,7 @@ var sequencer = {
       return;
     }
     
-    this.positionNeedle();
+    this.positionNeedle(this.needle.moveWidth * this.songStep);
 
     //Play all notes
     this.song[this.songStep].forEach(function (note) {
@@ -183,8 +183,8 @@ var sequencer = {
   resetStep: function () {
     this.songStep = 0;
   },
-  positionNeedle: function () {
-    this.needle.left = this.needle.moveWidth * this.songStep;
+  positionNeedle: function (left) {
+    this.needle.left = left;
   },
   updateNeedle: function () {
     this.needle.$el.style.transform = 'translateX(' + this.needle.left + 'px)';

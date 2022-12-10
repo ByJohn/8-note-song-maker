@@ -180,7 +180,9 @@ var sequencer = {
   resetStep: function () {
     this.songStep = 0;
   },
-  positionNeedle: function () {},
+  positionNeedle: function () {
+    this.$needle
+  },
   updateNeedle: function () {},
 
   //Ticker

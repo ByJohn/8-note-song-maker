@@ -164,7 +164,7 @@ var sequencer = {
       return;
     }
     
-    this.positionNeedle(this.needle.moveWidth * this.songStep);
+    this.positionNeedleAtStep(this.songStep);
 
     //Play all notes
     this.song[this.songStep].forEach(function (note) {
@@ -185,6 +185,12 @@ var sequencer = {
   },
   positionNeedle: function (left) {
     this.needle.left = left;
+  },
+  positionNeedleAtStep: function (step) {
+     this.positionNeedle(this.needle.moveWidth * step);
+  },
+  panNeedleAlong: function () {
+     this.positionNeedle(this.needle.left + 2);
   },
   updateNeedle: function () {
     this.needle.$el.style.transform = 'translateX(' + this.needle.left + 'px)';
@@ -216,6 +222,7 @@ var sequencer = {
     if (this.ticker.startTime === now || elapsed > this.ticker.fpsInterval) {
       this.ticker.then = now - (elapsed % this.ticker.fpsInterval);
 
+      this.panNeedleAlong();
       this.updateNeedle();
     }
   },

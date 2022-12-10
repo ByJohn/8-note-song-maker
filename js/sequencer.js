@@ -13,7 +13,7 @@ var sequencer = {
   interval: null,
   ticker: {
     ticking: false,
-    fps: 10,
+    fps: 1,
     fpsInterval: null,
     now: null,
     then: null,
@@ -196,20 +196,21 @@ var sequencer = {
     this.tick();
   },
   stopTicker: function () {
-    this.ticker.ticking = true;
+    this.ticker.ticking = false;
   },
   tick: function () {
     if (!this.ticker.ticking) return;
 
-    requestAnimationFrame(this.tick);
+    requestAnimationFrame(this.tick.bind(this));
 
     this.ticker.now = Date.now();
     this.ticker.elapsed = this.ticker.now - this.ticker.then;
 
-    if (this.ticker.elapsed <= this.ticker.fpsInterval) return; //If enough time has not yet elapsed, exit early
+    //If it is the first frame or enough time has elapsed
+    if (this.ticker.startTime === this.ticker.now || this.ticker.elapsed > this.ticker.fpsInterval) {
+      this.ticker.then = this.ticker.now - (this.ticker.elapsed % this.ticker.fpsInterval);
 
-    this.ticker.then = this.ticker.now - (this.ticker.elapsed % this.ticker.fpsInterval);
-
-    console.log('tick');
+      console.log('tick');
+    }
   },
 };

@@ -181,6 +181,8 @@ var sequencer = {
   resetStep: function () {
     this.songStep = 0;
   },
+  positionNeedle: function () {},
+  updateNeedle: function () {},
 
   //Ticker
   startTicker: function () {

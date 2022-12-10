@@ -11,6 +11,14 @@ var sequencer = {
   playing: false,
   bpm: 120,
   interval: null,
+  ticker: {
+    ticking: false,
+    fps: 10,
+    fpsInterval: null,
+    now: null,
+    then: null,
+    elapsed: null,
+  },
 
   //General
   init: function () {
@@ -137,12 +145,14 @@ var sequencer = {
     this.playing = true;
     document.body.classList.add('playing');
     this.step();
+    this.startTicker();
   },
   stop: function () {
     if (!this.playing) return false;
 
     this.playing = false;
     this.resetStep();
+    this.stopTicker();
     document.body.classList.remove('playing');
     window.clearTimeout(this.interval);
   },
@@ -173,5 +183,33 @@ var sequencer = {
   resetStep: function () {
     this.songStep = 0;
   },
-  
+
+  //Ticker
+  startTicker: function () {
+    if (this.ticker.ticking) return;
+
+    this.ticker.ticking = true;
+    this.ticker.fpsInterval = 1000 / this.ticker.fps;
+    this.ticker.then = Date.now();
+    this.ticker.startTime = this.ticker.then;
+
+    this.tick();
+  },
+  stopTicker: function () {
+    this.ticker.ticking = true;
+  },
+  tick: function () {
+    if (!this.ticker.ticking) return;
+
+    requestAnimationFrame(this.tick);
+
+    this.ticker.now = Date.now();
+    this.ticker.elapsed = this.ticker.now - this.ticker.then;
+
+    if (this.ticker.elapsed <= this.ticker.fpsInterval) return; //If enough time has not yet elapsed, exit early
+
+    this.ticker.then = this.ticker.now - (this.ticker.elapsed % this.ticker.fpsInterval);
+
+    console.log('tick');
+  },
 };

@@ -22,7 +22,6 @@ var sequencer = {
   init: function () {
     this.needleMoveWidth = document.getElementById('note-width-reference').offsetWidth;
 
-    //Here
     console.log(document.getElementById('note-width-reference'), this.needleMoveWidth);
   },
   forcePolyphonic: function (polyphonic) {
@@ -163,6 +162,8 @@ var sequencer = {
 
       return;
     }
+    
+    this.positionNeedle();
 
     //Play all notes
     this.song[this.songStep].forEach(function (note) {

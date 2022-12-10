@@ -185,10 +185,9 @@ var sequencer = {
   },
   positionNeedle: function () {
     this.needle.left = this.needle.moveWidth * this.songStep;
-    this.needle.$el.style.transform = 'translateX(' + this.needle + 'px)';
   },
   updateNeedle: function () {
-    
+    this.needle.$el.style.transform = 'translateX(' + this.needle + 'px)';
   },
 
   //Ticker

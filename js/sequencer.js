@@ -173,4 +173,5 @@ var sequencer = {
   resetStep: function () {
     this.songStep = 0;
   },
+  
 };

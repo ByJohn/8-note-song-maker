@@ -12,7 +12,7 @@ var sequencer = {
   song: [], //An array unique notes for each step (song tick)
   songStep: 0, //Song playback iterator
   playing: false,
-  bpm: 120,
+  bpm: 60,
   interval: null,
   ticker: {
     ticking: false,
@@ -190,9 +190,10 @@ var sequencer = {
     this.positionNeedle(this.needle.moveWidth * step);
   },
   panNeedleAlong: function (elapsed) {
-    let extraLeft = (this.getIntervalMilliseconds() * (elapsed / 1000)) / this.needle.moveWidth;
+    let velocity = this.needle.moveWidth / this.getIntervalMilliseconds(), //How many pixels it should move in 1ms
+        extraLeft = velocity * elapsed;
 
-    console.log(this.getIntervalMilliseconds(), extraLeft);
+    console.log(elapsed, this.getIntervalMilliseconds(), extraLeft);
 
     this.positionNeedle(this.needle.left + extraLeft);
   },

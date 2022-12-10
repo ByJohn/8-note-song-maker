@@ -20,9 +20,9 @@ var sequencer = {
 
   //General
   init: function () {
-    this.needleMoveWidth = document.getElementById('note-width-reference').offsetWidth;
+    this.needleMoveWidth = document.getElementById('needle-spacing-reference').offsetWidth;
 
-    console.log(document.getElementById('note-width-reference'), this.needleMoveWidth);
+    console.log(this.needleMoveWidth);
   },
   forcePolyphonic: function (polyphonic) {
     this.forcedPolyphonic = polyphonic;

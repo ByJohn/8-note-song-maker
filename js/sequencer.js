@@ -187,15 +187,16 @@ var sequencer = {
     this.needle.left = left;
   },
   positionNeedleAtStep: function (step) {
+    console.log('step');
+
     this.positionNeedle(this.needle.moveWidth * step);
   },
   panNeedleAlong: function (elapsed) {
-    elapsed = Math.round(elapsed);
-
     let velocity = this.needle.moveWidth / this.getIntervalMilliseconds(), //Pixels per millisecond
         extraLeft = velocity * elapsed;
 
-    console.log(this.needle.moveWidth, this.getIntervalMilliseconds(), velocity, elapsed, extraLeft);
+    // console.log(this.needle.moveWidth, this.getIntervalMilliseconds(), velocity, elapsed, extraLeft);
+    console.log('left');
 
     this.positionNeedle(this.needle.left + extraLeft);
   },

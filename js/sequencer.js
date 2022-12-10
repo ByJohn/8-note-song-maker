@@ -190,10 +190,12 @@ var sequencer = {
     this.positionNeedle(this.needle.moveWidth * step);
   },
   panNeedleAlong: function (elapsed) {
-    let velocity = this.needle.moveWidth / this.getIntervalMilliseconds(), //How many pixels it should move in 1ms
+    elapsed = Math.round(elapsed);
+
+    let velocity = this.needle.moveWidth / this.getIntervalMilliseconds(), //Pixels per millisecond
         extraLeft = velocity * elapsed;
 
-    console.log(elapsed, this.getIntervalMilliseconds(), extraLeft);
+    console.log(this.needle.moveWidth, this.getIntervalMilliseconds(), velocity, elapsed, extraLeft);
 
     this.positionNeedle(this.needle.left + extraLeft);
   },

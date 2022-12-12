@@ -12,11 +12,11 @@ var sequencer = {
   song: [], //An array unique notes for each step (song tick)
   songStep: 0, //Song playback iterator
   playing: false,
-  bpm: 60,
+  bpm: 120,
   interval: null,
   ticker: {
     ticking: false,
-    fps: 4,
+    fps: 2,
     fpsInterval: null,
     then: null,
   },
@@ -143,14 +143,14 @@ var sequencer = {
     this.playing = true;
     document.body.classList.add('playing');
     this.step();
-    this.startTicker();
+    // this.startTicker(); //Disabled for now
   },
   stop: function () {
     if (!this.playing) return false;
 
     this.playing = false;
     this.resetStep();
-    this.stopTicker();
+    // this.stopTicker();
     document.body.classList.remove('playing');
     window.clearTimeout(this.interval);
   },
@@ -165,6 +165,7 @@ var sequencer = {
     }
     
     this.positionNeedleAtStep(this.songStep);
+    this.updateNeedle();
 
     //Play all notes
     this.song[this.songStep].forEach(function (note) {
@@ -187,8 +188,6 @@ var sequencer = {
     this.needle.left = left;
   },
   positionNeedleAtStep: function (step) {
-    console.log('step');
-
     this.positionNeedle(this.needle.moveWidth * step);
   },
   panNeedleAlong: function (elapsed) {
@@ -196,7 +195,6 @@ var sequencer = {
         extraLeft = velocity * elapsed;
 
     // console.log(this.needle.moveWidth, this.getIntervalMilliseconds(), velocity, elapsed, extraLeft);
-    console.log('left');
 
     this.positionNeedle(this.needle.left + extraLeft);
   },

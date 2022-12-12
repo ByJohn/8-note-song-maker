@@ -346,3 +346,17 @@ form {
 .sequence .note-8 li {
   background-color: var(--note-8-colour);
 }
+
+@media print {
+  @page {
+    size: landscape;
+  }
+
+  .top {
+    display: none;
+  }
+
+  .sequence {
+    overflow: visible;
+  }
+}

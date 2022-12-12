@@ -15,8 +15,9 @@ var sequencer = {
   bpm: 120,
   interval: null,
   ticker: {
+    enabled: false, //Disabled while broken
     ticking: false,
-    fps: 2,
+    fps: 30,
     fpsInterval: null,
     then: null,
   },
@@ -143,14 +144,14 @@ var sequencer = {
     this.playing = true;
     document.body.classList.add('playing');
     this.step();
-    // this.startTicker(); //Disabled for now
+    if (this.ticker.enabled) this.startTicker();
   },
   stop: function () {
     if (!this.playing) return false;
 
     this.playing = false;
     this.resetStep();
-    // this.stopTicker();
+    if (this.ticker.enabled) this.stopTicker();
     document.body.classList.remove('playing');
     window.clearTimeout(this.interval);
   },

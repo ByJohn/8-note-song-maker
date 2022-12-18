@@ -1,4 +1,3 @@
-Printable
 Sharable
 Tempo control
 Auto scroll while playing

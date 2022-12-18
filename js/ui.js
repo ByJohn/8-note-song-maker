@@ -50,6 +50,16 @@ var ui = {
       return;
     }
 
-    
+    let hash = lines
+      .replace(/[^123456789 \n]/, ' ') //Replace all invalid characters with spaces
+      .replace(' ', '_') //Replace spaces with underscores
+      .replace(/\n/, '~'); //Replace new lines with tildes
+
+    if(history.pushState) {
+      history.pushState(null, null, '#myhash');
+    }
+    else {
+      location.hash = '#myhash';
+    }
   },
 };

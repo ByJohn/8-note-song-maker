@@ -43,6 +43,13 @@ var ui = {
   updateFormFromHash: function () {},
   updateHashFromForm: function () {
     let lines = this.$songData.value;
+
+    if (lines.trim() == '') {
+      history.pushState('', document.title, window.location.pathname + window.location.search);
+
+      return;
+    }
+
     
   },
 };

@@ -138,7 +138,7 @@ form {
   --unit: 20px;
   --padding: var(--unit);
   --note-width: calc(var(--unit) * 2);
-  --note-gap: calc(var(--unit) / 2);
+  --note-gap: 16px;
   --line-width: 2px;
   --left-start: calc(((var(--padding) * 2) + var(--note-gap) + (var(--note-width) / 2)) - (var(--line-width) / 2));
   overflow-x: auto;

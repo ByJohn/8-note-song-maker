@@ -1,6 +1,7 @@
 Printable
 Sharable
 Tempo control
+Auto scroll while playing
 Keyup debounce
 Preset songs
 Custom colours

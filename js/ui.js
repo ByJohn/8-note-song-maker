@@ -5,6 +5,7 @@ var ui = {
 
   init: function () {
     this.setupEvents();
+    this.updateFormFromHash();
     this.processForm();
   },
   setupEvents: function () {
@@ -21,6 +22,7 @@ var ui = {
   },
   formKeyup: function (e) {
     this.processForm();
+    this.updateHashFromForm();
 
     //If Ctrl+Enter is pressed
     if ((e.ctrlKey || e.metaKey) && (e.keyCode == 13 || e.keyCode == 10)) {
@@ -38,5 +40,9 @@ var ui = {
       sounds.play(e.target.dataset.play);
     }
   },
-  updateHash: function () {},
+  updateFormFromHash: function () {},
+  updateHashFromForm: function () {
+    let lines = this.$songData.value;
+    
+  },
 };

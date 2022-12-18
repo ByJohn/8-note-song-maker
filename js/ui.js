@@ -38,4 +38,5 @@ var ui = {
       sounds.play(e.target.dataset.play);
     }
   },
+  updateHash: function () {},
 };

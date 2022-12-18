@@ -45,21 +45,21 @@ var ui = {
     let lines = this.$songData.value;
 
     if (lines.trim() == '') {
-      history.pushState('', document.title, window.location.pathname + window.location.search);
+      history.replaceState('', document.title, window.location.pathname + window.location.search);
 
       return;
     }
 
     let hash = lines
-      .replace(/[^123456789 \n]/, ' ') //Replace all invalid characters with spaces
-      .replace(' ', '_') //Replace spaces with underscores
-      .replace(/\n/, '~'); //Replace new lines with tildes
+      .replace(/[^\d\w \n]/g, ' ') //Replace all invalid characters with spaces, allow letters for flair
+      .replace(/ /g, '_') //Replace spaces with underscores
+      .replace(/\n/g, '~'); //Replace new lines with tildes
 
-    if(history.pushState) {
-      history.pushState(null, null, '#myhash');
+    if(history.replaceState) {
+      history.replaceState('', document.title, '#' + hash);
     }
     else {
-      location.hash = '#myhash';
+      location.hash = '#' + hash;
     }
   },
 };

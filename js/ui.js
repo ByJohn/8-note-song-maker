@@ -45,7 +45,11 @@ var ui = {
 
     if (!hash) return false;
 
-    
+    let lines = hash
+      .replace(/_/g, ' ')
+      .replace(/~/g, "\n");
+
+    this.$songData.value = lines;
 
     return true;
   },

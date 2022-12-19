@@ -1,4 +1,3 @@
-Sharable
 Tempo control
 Auto scroll while playing
 Keyup debounce

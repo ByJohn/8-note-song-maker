@@ -40,14 +40,22 @@ var ui = {
       sounds.play(e.target.dataset.play);
     }
   },
-  updateFormFromHash: function () {},
+  updateFormFromHash: function () {
+    let hash = location.hash.replace('#', '').trim();
+
+    if (!hash) return false;
+
+    
+
+    return true;
+  },
   updateHashFromForm: function () {
     let lines = this.$songData.value;
 
     if (lines.trim() == '') {
       history.replaceState('', document.title, window.location.pathname + window.location.search);
 
-      return;
+      return null;
     }
 
     let hash = lines
@@ -61,5 +69,7 @@ var ui = {
     else {
       location.hash = '#' + hash;
     }
+
+    return hash;
   },
 };

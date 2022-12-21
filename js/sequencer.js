@@ -12,12 +12,12 @@ var sequencer = {
   song: [], //An array unique notes for each step (song tick)
   songStep: 0, //Song playback iterator
   playing: false,
-  bpm: 120,
+  bpm: 60,
   interval: null,
   ticker: {
-    enabled: false, //Disabled while broken
+    enabled: true, //Disabled while broken
     ticking: false,
-    fps: 30,
+    fps: 10,
     fpsInterval: null,
     then: null,
   },

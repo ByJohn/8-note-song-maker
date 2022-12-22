@@ -12,7 +12,10 @@ var sequencer = {
   song: [], //An array unique notes for each step (song tick)
   songStep: 0, //Song playback iterator
   playing: false,
-  bpm: 120,
+  defaultSettings: {
+    bpm: 120,
+  },
+  settings: {},
   interval: null,
   ticker: {
     enabled: false, //Disabled while broken
@@ -25,6 +28,8 @@ var sequencer = {
   //General
   init: function () {
     this.needle.moveWidth = document.getElementById('needle-spacing-reference').offsetWidth;
+
+    this.resetSettings();
   },
   forcePolyphonic: function (polyphonic) {
     this.forcedPolyphonic = polyphonic;
@@ -37,9 +42,15 @@ var sequencer = {
     return note;
   },
 
-  resetSongProperties: function() {},
-  getSongPropertiesFromString: function(line) {},
-  setSongProperties: function(songProperties) {},
+  resetSettings: function() {
+    this.setSettings(this.deafaultSettings);
+  },
+  getSettingsFromString: function(line) {
+    return array();
+  },
+  setSettings: function(settings) {
+    Object.assign(this.settings
+  },
 
   //Notes
   parseLines: function (lines) {

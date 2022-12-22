@@ -34,15 +34,15 @@ var ui = {
         splitLines = lines.split("\n");
 
     if (splitLines.length > 1) {
-      let songProperties = sequencer.getSongPropertiesFromString(splitLines[0]);
+      let settings = sequencer.getSettingsFromString(splitLines[0]);
 
-      if (songProperties.length > 0) {
-        sequencer.setSongProperties(songProperties);
+      if (Object.keys(settings).length > 0) {
+        sequencer.setSettings(settings);
 
         splitLines.shift(); //Remove the first line
       }
     } else {
-      sequencer.resetSongProperties();
+      sequencer.resetSettings();
     }
 
     sequencer.forcePolyphonic(splitLines.length > 1); //Split sequence onto multiple lines if the string has multiple lines

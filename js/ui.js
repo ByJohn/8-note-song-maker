@@ -33,7 +33,17 @@ var ui = {
     let lines = this.$songData.value,
         splitLines = lines.split("\n");
 
-    
+    if (splitLines.length > 1) {
+      let songProperties = sequencer.getSongPropertiesFromString(splitLines[0]);
+
+      if (songProperties.length > 0) {
+        sequencer.setSongProperties(songProperties);
+
+        splitLines.shift(); //Remove the first line
+      }
+    } else {
+      sequencer.resetSongProperties();
+    }
 
     sequencer.forcePolyphonic(splitLines.length > 1); //Split sequence onto multiple lines if the string has multiple lines
     sequencer.applySong(splitLines.join("\n"));

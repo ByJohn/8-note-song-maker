@@ -37,6 +37,10 @@ var sequencer = {
     return note;
   },
 
+  resetSongProperties: function() {},
+  getSongPropertiesFromString: function(line) {},
+  setSongProperties: function(songProperties) {},
+
   //Notes
   parseLines: function (lines) {
     let that = this,

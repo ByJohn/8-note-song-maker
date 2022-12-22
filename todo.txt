@@ -1,5 +1,6 @@
-Tempo control
 Auto scroll while playing
+Export to SVG/PNG/print
+Play note when key pressed
 Keyup debounce
 Preset songs
 Custom colours

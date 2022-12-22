@@ -36,7 +36,7 @@ var ui = {
     
 
     sequencer.forcePolyphonic(splitLines.length > 1); //Split sequence onto multiple lines if the string has multiple lines
-    sequencer.applySong(lines);
+    sequencer.applySong(splitLines.join("\n"));
   },
   maybePlaySoundOnClick: function (e) {
     if (typeof e.target.dataset.play !== 'undefined') {

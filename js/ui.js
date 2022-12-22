@@ -34,8 +34,9 @@ var ui = {
         splitLines = lines.split("\n");
 
     if (splitLines.length > 1) {
-      let settings = sequencer.getSettingsFromString(splitLines[0]);
+      let settings = sequencer.getSettingsFromString(splitLines[0]); //Identify any settings encoded in the first line
 
+      //If there are settings, disregard the first line as notes
       if (Object.keys(settings).length > 0) {
         sequencer.setSettings(settings);
 

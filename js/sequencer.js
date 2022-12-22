@@ -51,7 +51,11 @@ var sequencer = {
   getSettingsFromString: function(line) {
     let settings = {};
 
-    
+    if (!isNaN(line[0])) return settings; //Exit if the first character is a number
+
+    Object.keys(this.settingsLabelMappings).forEach(function (key) {
+      
+    });
 
     return settings;
   },

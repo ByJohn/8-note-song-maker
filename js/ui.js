@@ -30,9 +30,12 @@ var ui = {
     }
   },
   processForm: function () {
-    let lines = this.$songData.value;
+    let lines = this.$songData.value,
+        splitLines = lines.split("\n");
 
-    sequencer.forcePolyphonic(lines.split("\n").length > 1); //Split sequence onto multiple lines if the string has multiple lines
+    
+
+    sequencer.forcePolyphonic(splitLines.length > 1); //Split sequence onto multiple lines if the string has multiple lines
     sequencer.applySong(lines);
   },
   maybePlaySoundOnClick: function (e) {

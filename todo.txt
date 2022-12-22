@@ -1,5 +1,5 @@
-Auto scroll while playing
 Export to SVG/PNG/print
+Auto scroll while playing
 Play note when key pressed
 Keyup debounce
 Preset songs

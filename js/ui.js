@@ -33,6 +33,8 @@ var ui = {
     let lines = this.$songData.value,
         splitLines = lines.split("\n");
 
+    sequencer.resetSettings();
+
     if (splitLines.length > 1) {
       let settings = sequencer.getSettingsFromString(splitLines[0]); //Identify any settings encoded in the first line
 
@@ -42,8 +44,6 @@ var ui = {
 
         splitLines.shift(); //Remove the first line
       }
-    } else {
-      sequencer.resetSettings();
     }
 
     sequencer.forcePolyphonic(splitLines.length > 1); //Split sequence onto multiple lines if the string has multiple lines

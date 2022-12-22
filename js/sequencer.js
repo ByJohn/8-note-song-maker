@@ -46,7 +46,8 @@ var sequencer = {
   },
 
   resetSettings: function() {
-    this.setSettings(this.deafaultSettings);
+    console.log('reset', this.defaultSettings);
+    this.setSettings(this.defaultSettings);
   },
   getSettingsFromString: function(line) {
     let that = this,
@@ -59,7 +60,7 @@ var sequencer = {
           matches = line.match(new RegExp(regex));
 
       if (matches && matches[1] && !isNaN(matches[1])) {
-        settings[  ]
+        settings[that.settingsLabelMappings[key]] = parseFloat(matches[1]);
       }
     });
 
@@ -67,6 +68,8 @@ var sequencer = {
   },
   setSettings: function(settings) {
     this.settings = Object.assign({}, this.defaultSettings, settings);
+
+    console.log('set', this.settings);
   },
 
   //Notes

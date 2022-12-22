@@ -15,6 +15,9 @@ var sequencer = {
   defaultSettings: {
     bpm: 120,
   },
+  settingsLabelMappings: {
+    t: 'bpm',
+  },
   settings: {},
   interval: null,
   ticker: {
@@ -46,10 +49,14 @@ var sequencer = {
     this.setSettings(this.deafaultSettings);
   },
   getSettingsFromString: function(line) {
-    return array();
+    let settings = {};
+
+    
+
+    return settings;
   },
   setSettings: function(settings) {
-    Object.assign(this.settings
+    this.settings = Object.assign({}, this.defaultSettings, settings);
   },
 
   //Notes
@@ -147,7 +154,7 @@ var sequencer = {
 
   //Playback
   getIntervalMilliseconds: function () {
-    return (1 / (this.bpm / 60) * 1000);
+    return (1 / (this.settings.bpm / 60) * 1000);
   },
   togglePlay: function () {
     if (this.playing) this.stop();

@@ -16,9 +16,11 @@ var ui = {
 
 		this.$songData.addEventListener('keyup', this.formKeyup.bind(this), false);
 
+    this.$export.addEventListener('click', this.export.bind(this), false);
+
     document.addEventListener('click', this.maybePlaySoundOnClick.bind(this), false);
 
-    this.$export.addEventListener('click', this.export.bind(this), false);
+    document.addEventListener('keydown', this.maybePlaySoundOnKeyDown.bind(this), false);
   },
   formSubmitted: function (e) {
     e.preventDefault();
@@ -57,6 +59,49 @@ var ui = {
   maybePlaySoundOnClick: function (e) {
     if (typeof e.target.dataset.play !== 'undefined') {
       sounds.play(e.target.dataset.play);
+    }
+  },
+  maybePlaySoundOnKeyDown: function (e) {
+    switch (e.keyCode) {
+      case 49:
+      case 97:
+        sounds.play(1);
+        break;
+
+      case 50:
+      case 98:
+        sounds.play(2);
+        break;
+
+      case 51:
+      case 99:
+        sounds.play(3);
+        break;
+
+      case 52:
+      case 100:
+        sounds.play(4);
+        break;
+
+      case 53:
+      case 101:
+        sounds.play(5);
+        break;
+
+      case 54:
+      case 102:
+        sounds.play(6);
+        break;
+
+      case 55:
+      case 103:
+        sounds.play(7);
+        break;
+
+      case 56:
+      case 104:
+        sounds.play(8);
+        break;
     }
   },
   updateFormFromHash: function () {

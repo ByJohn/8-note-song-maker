@@ -4,6 +4,7 @@ var ui = {
   $songData: document.getElementById('song-data'),
   $export: document.getElementById('export'),
   $exportCanvas: document.getElementById('export-canvas'),
+  $sequenceInner: document.querySelector('.sequence-inner'),
 
   init: function () {
     this.setupEvents();
@@ -93,5 +94,14 @@ var ui = {
     }
 
     return hash;
+  },
+  export: function () {
+    let options = {
+      canvas: this.$exportCanvas,
+      scale: 2,
+    };
+
+    html2canvas(this.$sequenceInner, options).then(function(canvas) {
+    });
   },
 };

@@ -100,6 +100,7 @@ var ui = {
         scale = 2,
         options = {
           canvas: this.$exportCanvas,
+          backgroundColor: null, //Transparent
           scale: scale,
         };
 
@@ -108,10 +109,12 @@ var ui = {
 
     html2canvas(this.$sequenceInner, options).then(function(canvas) {
       let image = canvas.toDataURL(),
-          aDownloadLink = document.createElement('a');
-      aDownloadLink.download = 'canvas_image.png';
-      aDownloadLink.href = image;
-      aDownloadLink.click();
+          link = document.createElement('a');
+
+      link.download = '8 Note Song.png';
+      link.href = image;
+      link.click();
+      link.remove();
     });
   },
 };

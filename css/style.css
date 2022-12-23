@@ -85,8 +85,9 @@ header h2:hover {
 }
 
 .export-canvas {
+  display: none;
   position: absolute;
-  border: 1px solid red;
+  pointer-events: none;
 }
 
 form {

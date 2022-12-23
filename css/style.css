@@ -73,6 +73,17 @@ header h2:hover {
   opacity: 1;
 }
 
+.export {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.export:hover {
+  opacity: 1;
+}
+
 form {
   display: flex;
   margin-bottom: 1em;

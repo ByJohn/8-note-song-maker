@@ -46,7 +46,6 @@ var sequencer = {
   },
 
   resetSettings: function() {
-    console.log('reset', this.defaultSettings);
     this.setSettings(this.defaultSettings);
   },
   getSettingsFromString: function(line) {
@@ -68,8 +67,6 @@ var sequencer = {
   },
   setSettings: function(settings) {
     this.settings = Object.assign({}, this.defaultSettings, settings);
-
-    console.log('set', this.settings);
   },
 
   //Notes

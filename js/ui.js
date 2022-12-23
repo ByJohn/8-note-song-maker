@@ -2,6 +2,8 @@
 var ui = {
   $form: document.getElementById('form'),
   $songData: document.getElementById('song-data'),
+  $export: document.getElementById('export'),
+  $exportCanvas: document.getElementById('export-canvas'),
 
   init: function () {
     this.setupEvents();
@@ -14,6 +16,8 @@ var ui = {
 		this.$songData.addEventListener('keyup', this.formKeyup.bind(this), false);
 
     document.addEventListener('click', this.maybePlaySoundOnClick.bind(this), false);
+
+    $export.addEventListener('click', this.export.bind(this), false);
   },
   formSubmitted: function (e) {
     e.preventDefault();

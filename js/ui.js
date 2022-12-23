@@ -18,7 +18,7 @@ var ui = {
 
     document.addEventListener('click', this.maybePlaySoundOnClick.bind(this), false);
 
-    $export.addEventListener('click', this.export.bind(this), false);
+    this.$export.addEventListener('click', this.export.bind(this), false);
   },
   formSubmitted: function (e) {
     e.preventDefault();
@@ -96,12 +96,22 @@ var ui = {
     return hash;
   },
   export: function () {
-    let options = {
-      canvas: this.$exportCanvas,
-      scale: 2,
-    };
+    let that = this,
+        scale = 2,
+        options = {
+          canvas: this.$exportCanvas,
+          scale: scale,
+        };
+
+    this.$exportCanvas.width = that.$sequenceInner.offsetWidth * scale;
+    this.$exportCanvas.height = that.$sequenceInner.offsetHeight * scale;
 
     html2canvas(this.$sequenceInner, options).then(function(canvas) {
+      let image = canvas.toDataURL(),
+          aDownloadLink = document.createElement('a');
+      aDownloadLink.download = 'canvas_image.png';
+      aDownloadLink.href = image;
+      aDownloadLink.click();
     });
   },
 };

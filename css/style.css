@@ -172,7 +172,7 @@ form {
     #fff var(--line-width),
     #fff calc(var(--note-width) + var(--note-gap))
   );
-  background: url('../svg/line-background.svg') repeat;
+  background: url('../svg/line-background.svg') repeat; /* SVG used in order to support image export */
 }
 
 .sequence .size-reference {

@@ -1,4 +1,4 @@
 <!-- width = note-width + note-gap -->
 <svg xmlns="http://www.w3.org/2000/svg" width="56" height="5">
-  <line x1="0" y1="0" x2="0" y2="56" stroke="#eee" stroke-width="10" />
+  <line x1="0" y1="0" x2="0" y2="56" stroke="#eee" stroke-width="4" />
 </svg>

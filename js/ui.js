@@ -149,6 +149,8 @@ var ui = {
           scale: scale,
         };
 
+    document.body.classList.add('exporting');
+
     this.$exportCanvas.width = that.$sequenceInner.offsetWidth * scale;
     this.$exportCanvas.height = that.$sequenceInner.offsetHeight * scale;
 
@@ -160,6 +162,8 @@ var ui = {
       link.href = image;
       link.click();
       link.remove();
+
+      document.body.classList.remove('exporting');
     });
   },
 };

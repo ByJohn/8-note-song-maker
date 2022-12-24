@@ -149,6 +149,8 @@ var ui = {
           scale: scale,
         };
 
+    sequencer.stop();
+
     document.body.classList.add('exporting');
 
     this.$exportCanvas.width = that.$sequenceInner.offsetWidth * scale;

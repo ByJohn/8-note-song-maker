@@ -1,5 +1,5 @@
 Auto scroll while playing
-Keyup debounce
 Preset songs
+Keyup debounce
 Custom colours
 Numbers on mobile keyboard

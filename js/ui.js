@@ -4,7 +4,6 @@ var ui = {
   $songData: document.getElementById('song-data'),
   $export: document.getElementById('export'),
   $exportCanvas: document.getElementById('export-canvas'),
-  $sequenceInner: document.querySelector('.sequence-inner'),
 
   init: function () {
     this.setupEvents();
@@ -153,10 +152,10 @@ var ui = {
 
     document.body.classList.add('exporting');
 
-    this.$exportCanvas.width = that.$sequenceInner.offsetWidth * scale;
-    this.$exportCanvas.height = that.$sequenceInner.offsetHeight * scale;
+    this.$exportCanvas.width = sequence.$inner.offsetWidth * scale;
+    this.$exportCanvas.height = sequence.$inner.offsetHeight * scale;
 
-    html2canvas(this.$sequenceInner, options).then(function(canvas) {
+    html2canvas(sequence.$inner, options).then(function(canvas) {
       let image = canvas.toDataURL(),
           link = document.createElement('a');
 

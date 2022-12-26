@@ -1,6 +1,7 @@
 //Sequencer
 var sequencer = {
   $sequence: document.getElementById('sequence'),
+  $inner: document.querySelector('.sequence-inner'),
   $monoNoteRows: document.querySelectorAll('.monophonic .note-row ul'), //Monophonic rows (only one, but still an array for consistany)
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
   needle: {
@@ -174,6 +175,7 @@ var sequencer = {
     if (this.playing) return false;
 
     this.playing = true;
+    this.$inner.style.animationDuration = (this.song.length) + 's';
     document.body.classList.add('playing');
     this.step();
     if (this.ticker.enabled) this.startTicker();
@@ -184,6 +186,7 @@ var sequencer = {
     this.playing = false;
     this.resetStep();
     if (this.ticker.enabled) this.stopTicker();
+    this.$inner.style.removeProperty('animation-duration');
     document.body.classList.remove('playing');
     window.clearTimeout(this.interval);
   },

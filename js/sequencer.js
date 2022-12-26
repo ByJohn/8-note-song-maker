@@ -174,8 +174,11 @@ var sequencer = {
   play: function () {
     if (this.playing) return false;
 
+    let panSpeed = ((this.song.length / this.settings.bpm) * 60); //In seconds
+    console.log(this.song.length, this.settings.bpm, panSpeed);
+
     this.playing = true;
-    this.$inner.style.animationDuration = (this.song.length) + 's';
+    this.$inner.style.animationDuration = panSpeed + 's';
     document.body.classList.add('playing');
     this.step();
     if (this.ticker.enabled) this.startTicker();

@@ -181,11 +181,13 @@ form {
 
 .playing .sequence-inner {
   animation: pan-notes 3s 1s linear forwards;
+  animation: pan-notes 3s 1s cubic-bezier(0.1, 0, 1, 1) forwards;
 }
 
 @keyframes pan-notes {
   0% { transform: translate(0, -50%); }
   100% { transform: translate(calc(-100% + (var(--note-gap) + var(--note-width) * 4)), -50%); }
+  100% { transform: translate(calc(-100% + 30vw), -50%); }
 }
 
 .sequence-inner:before {

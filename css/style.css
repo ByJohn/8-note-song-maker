@@ -166,6 +166,10 @@ form {
   cursor: default;
 }
 
+.playing .sequence {
+  overflow: hidden;
+}
+
 .sequence-inner {
   display: inline-block;
   position: relative;
@@ -173,6 +177,14 @@ form {
   padding: calc(var(--padding) / 2) var(--padding);
   padding-right: calc(var(--padding) * 1.5);
   transform: translateY(-50%);
+}
+
+.playing .sequence-inner {
+  animation: scroll-notes;
+}
+
+@keyframes scroll-notes {
+  0% { transform: }
 }
 
 .sequence-inner:before {

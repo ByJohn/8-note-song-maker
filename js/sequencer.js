@@ -174,11 +174,12 @@ var sequencer = {
   play: function () {
     if (this.playing) return false;
 
-    let panSpeed = ((this.song.length / this.settings.bpm) * 60); //In seconds
-    console.log(this.song.length, this.settings.bpm, panSpeed);
+    let songDuration = ((this.song.length / this.settings.bpm) * 60), //Song duration in seconds
+        beatLength = songDuration / this.song.length; //Length of time between beats
 
     this.playing = true;
-    this.$inner.style.animationDuration = panSpeed + 's';
+    this.$inner.style.animationDuration = songDuration + 's';
+    this.$inner.style.animationDelay = (beatLength * 2) + 's';
     document.body.classList.add('playing');
     this.step();
     if (this.ticker.enabled) this.startTicker();
@@ -190,6 +191,7 @@ var sequencer = {
     this.resetStep();
     if (this.ticker.enabled) this.stopTicker();
     this.$inner.style.removeProperty('animation-duration');
+    this.$inner.style.removeProperty('animation-delay');
     document.body.classList.remove('playing');
     window.clearTimeout(this.interval);
   },

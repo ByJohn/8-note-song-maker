@@ -180,12 +180,12 @@ form {
 }
 
 .playing .sequence-inner {
-  animation: scroll-notes 3s linear infinite;
+  animation: scroll-notes 3s 1s linear infinite;
 }
 
 @keyframes scroll-notes {
-  0% { transform: translate(calc(-50% + 0vw), -50%); }
-  100% { transform: translate(calc(-50% + 100vw), -50%); }
+  0% { transform: translate(0, -50%); }
+  100% { transform: translate(calc(-100% + (var(--note-gap) + var(--note-width) * 4)), -50%); }
 }
 
 .sequence-inner:before {

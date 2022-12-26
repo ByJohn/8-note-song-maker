@@ -176,7 +176,7 @@ form {
   top: 50%;
   padding: calc(var(--padding) / 2) var(--padding);
   padding-right: calc(var(--padding) * 1.5);
-  transform: translateY(-50%);
+  transform: translate(0, -50%);
 }
 
 .playing .sequence-inner {

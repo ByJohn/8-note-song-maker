@@ -239,7 +239,7 @@ form {
 }
 
 @keyframes pan-needle {
-  0% { transform: translateX(0); }
+  0% { transform: translateX(calc(0px - var(--line-width))); }
   100% { transform: translateX(var(--pan-needle-right)); }
 }
 

@@ -34,6 +34,8 @@ var sequencer = {
     this.needle.moveWidth = document.getElementById('needle-spacing-reference').offsetWidth;
 
     this.resetSettings();
+
+    
   },
   forcePolyphonic: function (polyphonic) {
     this.forcedPolyphonic = polyphonic;

@@ -13,7 +13,7 @@ var ui = {
   setupEvents: function () {
 		this.$form.addEventListener('submit', this.formSubmitted.bind(this), false);
 
-		this.$songData.addEventListener('keyup', this.formKeyup.bind(this), false);
+		this.$songData.addEventListener('keyup', debounce(this.formKeyup.bind(this), 100), false);
 
     this.$export.addEventListener('click', this.export.bind(this), false);
 

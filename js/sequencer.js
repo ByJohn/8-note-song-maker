@@ -98,6 +98,14 @@ var sequencer = {
     this.song = this.parseLines(lines);
 
     this.draw(this.song);
+    this.setCSSVariables();
+  },
+  setCSSVariables: function () {
+    let songDuration = ((this.song.length / this.settings.bpm) * 60), //Song duration in seconds
+        beatDuration = songDuration / this.song.length; //Length of time between beats
+
+    document.documentElement.style.setProperty('--song-duration', songDuration + 's');
+    document.documentElement.style.setProperty('--beat-duration', beatDuration + 's');
   },
 
   //Drawing
@@ -224,7 +232,7 @@ var sequencer = {
   restartPanAnimation: function () {
     if (this.$sequence.offsetWidth >= this.$inner.offsetWidth) return; //Do not start panning when the sequence is less wide than the viewport
 
-     let songDuration = ((this.song.length / this.settings.bpm) * 60), //Song duration in seconds
+    let songDuration = ((this.song.length / this.settings.bpm) * 60), //Song duration in seconds
         beatLength = songDuration / this.song.length; //Length of time between beats
 
     this.$sequence.scrollTo(0, 0);

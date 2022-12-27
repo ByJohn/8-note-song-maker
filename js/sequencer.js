@@ -193,18 +193,16 @@ var sequencer = {
 
     document.body.classList.add('playing');
 
-    this.step();
-
-    if (this.ticker.enabled) this.startTicker();
+    this.startTicker();
   },
   stop: function () {
     if (!this.playing) return false;
     
     this.playing = false;
 
-    this.resetStep();
+    this.stopTicker();
 
-    if (this.ticker.enabled) this.stopTicker();
+    this.resetStep();
 
     this.stopPlayingAnimation();
 
@@ -213,8 +211,6 @@ var sequencer = {
     window.clearTimeout(this.interval);
   },
   step: function () {
-    this.interval = window.setTimeout(this.step.bind(this), this.getIntervalMilliseconds());
-
     //If the current song step does not exist, stop playing
     if (typeof this.song[this.songStep] === 'undefined') {
       this.stop();
@@ -225,6 +221,8 @@ var sequencer = {
     if (this.songStep === 0) {
       this.restartPlayingAnimation();
     }
+    
+    console.log('step');
     
     // this.positionNeedleAtStep(this.songStep);
     // this.updateNeedle();
@@ -254,25 +252,8 @@ var sequencer = {
   stopPlayingAnimation: function () {
     document.body.classList.remove('playing-animation');
   },
-  positionNeedle: function (left) {
-    this.needle.left = left;
-  },
-  positionNeedleAtStep: function (step) {
-    this.positionNeedle(this.needle.moveWidth * step);
-  },
-  panNeedleAlong: function (elapsed) {
-    let velocity = this.needle.moveWidth / this.getIntervalMilliseconds(), //Pixels per millisecond
-        extraLeft = velocity * elapsed;
 
-    // console.log(this.needle.moveWidth, this.getIntervalMilliseconds(), velocity, elapsed, extraLeft);
-
-    this.positionNeedle(this.needle.left + extraLeft);
-  },
-  updateNeedle: function () {
-    this.needle.$el.style.transform = 'translateX(' + this.needle.left + 'px)';
-  },
-
-  //Ticker
+  //Ticker (setInterval-like using request animation frame)
   startTicker: function () {
     if (this.ticker.ticking) return;
 
@@ -298,8 +279,7 @@ var sequencer = {
     if (this.ticker.startTime === now || elapsed > this.ticker.fpsInterval) {
       this.ticker.then = now - (elapsed % this.ticker.fpsInterval);
 
-      this.panNeedleAlong(elapsed);
-      this.updateNeedle();
+      this.step(elapsed);
     }
   },
 };

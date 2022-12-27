@@ -193,8 +193,6 @@ var sequencer = {
 
     this.playing = true;
 
-    this.restartPlayingAnimation();
-
     document.body.classList.add('playing');
 
     this.step();
@@ -225,6 +223,10 @@ var sequencer = {
 
       return;
     }
+
+    if (this.songStep === 0) {
+      this.restartPlayingAnimation();
+    }
     
     // this.positionNeedleAtStep(this.songStep);
     // this.updateNeedle();
@@ -241,7 +243,6 @@ var sequencer = {
 
     if (this.songStep >= this.song.length) {
       this.resetStep();
-      this.restartPlayingAnimation();
     }
   },
   resetStep: function () {

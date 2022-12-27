@@ -180,7 +180,7 @@ form {
   transform: translate(0, -50%);
 }
 
-.playing.playing-panning .sequence-inner {
+.wide-song.playing-annimation .sequence-inner {
   animation: pan-notes var(--song-duration) calc( var(--beat-duration) * 2) linear forwards;
   /* animation-timing-function: cubic-bezier(0.1, 0, 1, 1); */
 }
@@ -233,7 +233,7 @@ form {
   background-color: #666;
 }
 
-.playing .sequence .play-needle {
+.playing-animation .sequence .play-needle {
   opacity: 1;
   animation: pan-needle var(--song-duration) linear infinite;
 }

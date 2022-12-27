@@ -188,6 +188,8 @@ var sequencer = {
   },
   play: function () {
     if (this.playing) return false;
+    
+    this.$sequence.scrollTo(0, 0);
 
     this.playing = true;
     this.restartPanAnimation();
@@ -235,18 +237,6 @@ var sequencer = {
   },
   resetStep: function () {
     this.songStep = 0;
-  },
-  restartPanAnimation: function () {
-    if (this.$sequence.offsetWidth >= this.$inner.offsetWidth) return; //Do not start panning when the sequence is less wide than the viewport
-
-    this.$sequence.scrollTo(0, 0);
-
-    document.body.classList.remove('playing-panning');
-    document.body.offsetHeight; //Trigger reflow
-    document.body.classList.add('playing-panning');
-  },
-  stopPanAnimation: function () {
-    document.body.classList.remove('playing-panning');
   },
   positionNeedle: function (left) {
     this.needle.left = left;

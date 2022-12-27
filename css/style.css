@@ -51,19 +51,45 @@ button {
 
 .menu-toggle {
   position: absolute;
-  top: 0;
+  top: 1.1em;
   left: 0;
+  padding: 0;
   background: none;
-  width: 2em;
-  height: 2em;
+  width: 20px;
+  height: 20px;
 }
 
 .menu-toggle span {
-  
+  display: block;
   width: 100%;
+  top: 50%;
+  margin-top: -1.5px;
   height: 3px;
   border-radius: 10px;
   background-color: #ddd;
+}
+
+.menu-toggle:hover span {
+  background-color: #444;
+}
+
+.menu-toggle span:before,
+.menu-toggle span:after {
+  --gap: 5px;
+  display: block;
+  position: absolute;
+  content: '';
+  width: inherit;
+  height: inherit;
+  background-color: inherit;
+}
+
+.menu-toggle span:before {
+  top: 0;
+}
+
+.menu-toggle span:after {
+  bottom: 0;
 }
 
 header {

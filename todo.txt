@@ -1,4 +1,10 @@
 Preset songs
 Highlight melody notes
+Unsupported browser message
+  CSS variables
+  calc
+  ES6
+Note pulse when played
+Asset Cache-buster
 Custom colours
 Numbers on mobile keyboard

@@ -232,21 +232,14 @@ var sequencer = {
   restartPanAnimation: function () {
     if (this.$sequence.offsetWidth >= this.$inner.offsetWidth) return; //Do not start panning when the sequence is less wide than the viewport
 
-    let songDuration = ((this.song.length / this.settings.bpm) * 60), //Song duration in seconds
-        beatLength = songDuration / this.song.length; //Length of time between beats
-
     this.$sequence.scrollTo(0, 0);
 
-    this.$inner.style.animation = 'none'; //Override animation with dummy placeholder
-    this.$inner.offsetHeight; //Trigger reflow
-    this.$inner.style.removeProperty('animation'); //Remove dummy animation
-
-    this.$inner.style.animationDuration = songDuration + 's';
-    this.$inner.style.animationDelay = (beatLength * 2) + 's';
+    document.body.classList.remove('playing-panning');
+    document.body.offsetHeight; //Trigger reflow
+    document.body.classList.add('playing-panning');
   },
   stopPanAnimation: function () {
-    this.$inner.style.removeProperty('animation-duration');
-    this.$inner.style.removeProperty('animation-delay');
+    document.body.classList.remove('playing-panning');
   },
   positionNeedle: function (left) {
     this.needle.left = left;

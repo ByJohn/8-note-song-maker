@@ -180,7 +180,7 @@ form {
 }
 
 .playing.playing-panning .sequence-inner {
-  animation: pan-notes var(--song-duration) calc( var(-beat-duration) * 2) linear forwards;
+  animation: pan-notes var(--song-duration) calc( var(--beat-duration) * 2) linear forwards;
   /* animation-timing-function: cubic-bezier(0.1, 0, 1, 1); */
 }
 

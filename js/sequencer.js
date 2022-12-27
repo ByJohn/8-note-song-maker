@@ -35,7 +35,7 @@ var sequencer = {
 
     this.resetSettings();
 
-    
+    window.addEventListener('resize', this.checkSongWidth.bind(this));
   },
   forcePolyphonic: function (polyphonic) {
     this.forcedPolyphonic = polyphonic;
@@ -46,6 +46,9 @@ var sequencer = {
     if (isNaN(note) || note < 1 || note > 8) return null;
 
     return note;
+  },
+  checkSongWidth: function () {
+    document.body.classList.toggle('wide-song', this.$inner.offsetWidth > this.$sequence.offsetWidth);
   },
 
   resetSettings: function() {
@@ -101,6 +104,7 @@ var sequencer = {
 
     this.draw(this.song);
     this.setCSSVariables();
+    this.checkSongWidth();
   },
   setCSSVariables: function () {
     let songDuration = ((this.song.length / this.settings.bpm) * 60), //Song duration in seconds

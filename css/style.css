@@ -179,9 +179,9 @@ form {
   transform: translate(0, -50%);
 }
 
-.playing .sequence-inner {
-  animation: pan-notes 3s 1s linear forwards;
+.playing .sequence-inner[style*="animation-duration"] {
   animation: pan-notes 3s 1s cubic-bezier(0.1, 0, 1, 1) forwards;
+  animation: pan-notes 3s 1s linear forwards;
 }
 
 @keyframes pan-notes {

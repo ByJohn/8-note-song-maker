@@ -227,7 +227,8 @@ var sequencer = {
      let songDuration = ((this.song.length / this.settings.bpm) * 60), //Song duration in seconds
         beatLength = songDuration / this.song.length; //Length of time between beats
 
-    this.$inner
+    this.$sequence.scrollTo(0, 0);
+
     this.$inner.style.animation = 'none'; //Override animation with dummy placeholder
     this.$inner.offsetHeight; //Trigger reflow
     this.$inner.style.removeProperty('animation'); //Remove dummy animation

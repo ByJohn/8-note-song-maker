@@ -1,4 +1,4 @@
-Auto scroll while playing
+Make needle static when panning notes
 Preset songs
 Keyup debounce
 Custom colours

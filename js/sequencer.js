@@ -23,6 +23,7 @@ var sequencer = {
   interval: null,
   ticker: {
     ticking: false,
+    fpsInterval: null,
     then: null,
   },
 
@@ -276,7 +277,9 @@ var sequencer = {
     if (this.ticker.ticking) return;
 
     this.ticker.ticking = true;
+    this.ticker.fpsInterval = this.getIntervalMilliseconds();
     this.ticker.then = Date.now();
+    this.ticker.startTime = this.ticker.then;
 
     this.tick();
   },

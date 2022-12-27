@@ -104,6 +104,7 @@ var sequencer = {
     let songDuration = ((this.song.length / this.settings.bpm) * 60), //Song duration in seconds
         beatDuration = songDuration / this.song.length; //Length of time between beats
 
+    document.documentElement.style.setProperty('--song-length', this.song.length);
     document.documentElement.style.setProperty('--song-duration', songDuration + 's');
     document.documentElement.style.setProperty('--beat-duration', beatDuration + 's');
   },
@@ -208,8 +209,8 @@ var sequencer = {
       return;
     }
     
-    this.positionNeedleAtStep(this.songStep);
-    this.updateNeedle();
+    // this.positionNeedleAtStep(this.songStep);
+    // this.updateNeedle();
 
     //Play all notes
     this.song[this.songStep].forEach(function (note) {

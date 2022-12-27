@@ -158,6 +158,7 @@ form {
   --note-gap: 16px;
   --line-width: 2px;
   --left-start: calc(((var(--padding) * 2) + var(--note-gap) + (var(--note-width) / 2)) - (var(--line-width) / 2));
+  --song-width: calc(var(--song-length) * (var(--note-gap) + var(--note-width)));
   overflow-x: auto;
   overflow-y: hidden;
   flex: 1 0 max-content;
@@ -186,8 +187,8 @@ form {
 
 @keyframes pan-notes {
   0% { transform: translate(0, -50%); }
-  100% { transform: translate(calc(-100% + (var(--note-gap) + var(--note-width) * 4)), -50%); }
   100% { transform: translate(calc(-100% + 30vw), -50%); }
+/*   100% { transform: translate(calc(-100% + (var(--note-gap) + var(--note-width) * 4)), -50%); } */
 }
 
 .sequence-inner:before {
@@ -222,6 +223,7 @@ form {
 }
 
 .sequence .play-needle {
+  --pan-needle-right: var(--song-width);
   opacity: 0;
   position: absolute;
   top: 0;
@@ -233,6 +235,12 @@ form {
 
 .playing .sequence .play-needle {
   opacity: 1;
+  animation: pan-needle var(--song-duration) linear infinite;
+}
+
+@keyframes pan-needle {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(var(--pan-needle-right)); }
 }
 
 .sequence.is-polyphonic .monophonic,

@@ -5,6 +5,6 @@ Unsupported browser message
   calc
   ES6
 Note pulse when played
-Asset Cache-buster
+Asset cache-buster
 Custom colours
 Numbers on mobile keyboard

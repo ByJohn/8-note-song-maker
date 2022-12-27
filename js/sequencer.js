@@ -22,10 +22,7 @@ var sequencer = {
   settings: {},
   interval: null,
   ticker: {
-    enabled: false, //Disabled while broken
     ticking: false,
-    fps: 10,
-    fpsInterval: null,
     then: null,
   },
 
@@ -279,9 +276,7 @@ var sequencer = {
     if (this.ticker.ticking) return;
 
     this.ticker.ticking = true;
-    this.ticker.fpsInterval = 1000 / this.ticker.fps;
     this.ticker.then = Date.now();
-    this.ticker.startTime = this.ticker.then;
 
     this.tick();
   },

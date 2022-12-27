@@ -188,23 +188,32 @@ var sequencer = {
   },
   play: function () {
     if (this.playing) return false;
-    
+
     this.$sequence.scrollTo(0, 0);
 
     this.playing = true;
-    this.restartPanAnimation();
+
+    this.restartPlayingAnimation();
+
     document.body.classList.add('playing');
+
     this.step();
+
     if (this.ticker.enabled) this.startTicker();
   },
   stop: function () {
     if (!this.playing) return false;
-
+    
     this.playing = false;
+
     this.resetStep();
+
     if (this.ticker.enabled) this.stopTicker();
-    this.stopPanAnimation();
+
+    this.stopPlayingAnimation();
+
     document.body.classList.remove('playing');
+
     window.clearTimeout(this.interval);
   },
   step: function () {
@@ -232,11 +241,19 @@ var sequencer = {
 
     if (this.songStep >= this.song.length) {
       this.resetStep();
-      this.restartPanAnimation();
+      this.restartPlayingAnimation();
     }
   },
   resetStep: function () {
     this.songStep = 0;
+  },
+  restartPlayingAnimation: function () {
+    document.body.classList.remove('playing-animation');
+    document.body.offsetHeight; //Trigger reflow
+    document.body.classList.add('playing-animation');
+  },
+  stopPlayingAnimation: function () {
+    document.body.classList.remove('playing-animation');
   },
   positionNeedle: function (left) {
     this.needle.left = left;

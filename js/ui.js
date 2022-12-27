@@ -152,10 +152,10 @@ var ui = {
 
     document.body.classList.add('exporting');
 
-    this.$exportCanvas.width = sequence.$inner.offsetWidth * scale;
-    this.$exportCanvas.height = sequence.$inner.offsetHeight * scale;
+    this.$exportCanvas.width = sequencer.$inner.offsetWidth * scale;
+    this.$exportCanvas.height = sequencer.$inner.offsetHeight * scale;
 
-    html2canvas(sequence.$inner, options).then(function(canvas) {
+    html2canvas(sequencer.$inner, options).then(function(canvas) {
       let image = canvas.toDataURL(),
           link = document.createElement('a');
 

@@ -1,4 +1,4 @@
-Make needle static when panning notes
 Preset songs
+Highlight melody notes
 Custom colours
 Numbers on mobile keyboard

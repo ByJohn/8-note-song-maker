@@ -4,11 +4,6 @@ var sequencer = {
   $inner: document.querySelector('.sequence-inner'),
   $monoNoteRows: document.querySelectorAll('.monophonic .note-row ul'), //Monophonic rows (only one, but still an array for consistany)
   $polyNoteRows: [].slice.call(document.querySelectorAll('.polyphonic .note-row ul'), 0).reverse(), //polyphonic rows, reversed
-  needle: {
-    $el: document.getElementById('play-needle'),
-    moveWidth: 0,
-    left: 0,
-  },
   forcedPolyphonic: false,
   song: [], //An array unique notes for each step (song tick)
   songStep: 0, //Song playback iterator
@@ -20,17 +15,14 @@ var sequencer = {
     t: 'bpm',
   },
   settings: {},
-  interval: null,
   ticker: {
     ticking: false,
-    fpsInterval: null,
+    startTime: null,
     then: null,
   },
 
   //General
   init: function () {
-    this.needle.moveWidth = document.getElementById('needle-spacing-reference').offsetWidth;
-
     this.resetSettings();
 
     window.addEventListener('resize', this.checkSongWidth.bind(this));
@@ -198,17 +190,15 @@ var sequencer = {
   stop: function () {
     if (!this.playing) return false;
     
-    this.playing = false;
-
     this.stopTicker();
-
-    this.resetStep();
 
     this.stopPlayingAnimation();
 
+    this.resetStep();
+
     document.body.classList.remove('playing');
 
-    window.clearTimeout(this.interval);
+    this.playing = false;
   },
   step: function () {
     //If the current song step does not exist, stop playing
@@ -222,11 +212,6 @@ var sequencer = {
       this.restartPlayingAnimation();
     }
     
-    console.log('step');
-    
-    // this.positionNeedleAtStep(this.songStep);
-    // this.updateNeedle();
-
     //Play all notes
     this.song[this.songStep].forEach(function (note) {
       sounds.play(note);
@@ -258,7 +243,6 @@ var sequencer = {
     if (this.ticker.ticking) return;
 
     this.ticker.ticking = true;
-    this.ticker.fpsInterval = this.getIntervalMilliseconds();
     this.ticker.then = Date.now();
     this.ticker.startTime = this.ticker.then;
 
@@ -273,11 +257,12 @@ var sequencer = {
     requestAnimationFrame(this.tick.bind(this));
 
     let now = Date.now(),
-        elapsed = now - this.ticker.then;
+        elapsed = now - this.ticker.then,
+        targetInterval = this.getIntervalMilliseconds();
 
     //If it is the first frame or enough time has elapsed
-    if (this.ticker.startTime === now || elapsed > this.ticker.fpsInterval) {
-      this.ticker.then = now - (elapsed % this.ticker.fpsInterval);
+    if (this.ticker.startTime === now || elapsed > targetInterval) {
+      this.ticker.then = now - (elapsed % targetInterval);
 
       this.step(elapsed);
     }

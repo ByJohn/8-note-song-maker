@@ -18,8 +18,25 @@ var sidebars = {
     this.$menuToggle.addEventListener('click', this.open.bind(this, 'menu'), false);
   },
 
-  open: function (name) {
-    let $si
+  get: function (name) {
+    if (typeof this.sidebars[name] !== 'undefined') {
+      return this.sidebars[name];
+    }
+
+    return null;
   },
-  close: function (name) {},
+  open: function (name) {
+    let $sidebar = this.get(name);
+
+    if ($sidebar && !$sidebar.classList.contains('open')) {
+      $sidebar.classList.add('open');
+    }
+  },
+  close: function (name) {
+    let $sidebar = this.get(name);
+
+    if ($sidebar && $sidebar.classList.contains('open')) {
+      $sidebar.classList.remove('open');
+    }
+  },
 };

@@ -15,13 +15,11 @@ var sidebars = {
     this.setupEvents();
   },
   setupEvents: function () {
-    this.$menuToggle.addEventListener('click', this.openMenu.bind(this), false);
+    this.$menuToggle.addEventListener('click', this.open.bind(this, 'menu'), false);
   },
 
-  openMenu: function () {
-    this.open('menu');
+  open: function (name) {
+    let $si
   },
-
-  open: function (name) {},
   close: function (name) {},
 };

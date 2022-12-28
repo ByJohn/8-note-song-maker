@@ -66,11 +66,11 @@ button {
   margin-top: -1.5px;
   height: 3px;
   border-radius: 10px;
-  background-color: #ddd;
+  background-color: #eee;
 }
 
 .menu-toggle:hover span {
-  background-color: #444;
+  background-color: #bbb;
 }
 
 .menu-toggle span:before,

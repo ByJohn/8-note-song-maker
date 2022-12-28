@@ -20,7 +20,7 @@ var sidebars = {
     let $button = null,
         $sidebar = null;
 
-    if (typeof e.target.dataset.sidebarOpen !== 'undefinined') {
+    if (typeof e.target.dataset.sidebarOpen !== 'undefined') {
       $button = e.target;
       $sidebar = this.get(e.target.dataset.sidebarOpen);
     } else if ($button = e.target.closest('[data-sidebar-open]')) {
@@ -33,6 +33,7 @@ var sidebars = {
 
     if ($button) {
       this.open($button.dataset.sidebarOpen);
+      e.preventDefault();
     }
 
     if ($sidebar) {

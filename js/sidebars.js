@@ -21,7 +21,7 @@ var sidebars = {
 
     if (typeof e.target.dataset.sidebarOpen !== 'undefinined') {
       $sidebar = this.get(e.target.dataset.sidebarOpen);
-    } else if (e.target.closest('[data-sidebar-open]'))
+    } else if (let $buttone.target.closest('[data-sidebar-open]'))
     if (e.target.classList.contains('sidebar')) {
       $sidebar = e.target;
     } else {

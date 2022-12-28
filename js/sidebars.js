@@ -17,12 +17,14 @@ var sidebars = {
     window.addEventListener('click', this.clickAnywhere.bind(this), false);
   },
   clickAnywhere: function (e) {
-    let $sidebar = null;
+    let $button = null,
+        $sidebar = null;
 
     if (typeof e.target.dataset.sidebarOpen !== 'undefinined') {
       $sidebar = this.get(e.target.dataset.sidebarOpen);
-    } else if (let $buttone.target.closest('[data-sidebar-open]'))
-    if (e.target.classList.contains('sidebar')) {
+    } else if ($button = e.target.closest('[data-sidebar-open]')) {
+      $sidebar = this.get($button.dataset.sidebarOpen);
+    } else if (e.target.classList.contains('sidebar')) {
       $sidebar = e.target;
     } else {
       $sidebar = e.target.closest('.sidebar');

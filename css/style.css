@@ -82,6 +82,7 @@ button {
   width: inherit;
   height: inherit;
   background-color: inherit;
+  pointer-events: none;
 }
 
 .menu-toggle span:before {
@@ -446,6 +447,7 @@ form {
 
 .sidebar {
   position: fixed;
+  z-index: 5;
   top: 0;
   left: 0;
   width: 20em;

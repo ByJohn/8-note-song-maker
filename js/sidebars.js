@@ -21,6 +21,7 @@ var sidebars = {
         $sidebar = null;
 
     if (typeof e.target.dataset.sidebarOpen !== 'undefinined') {
+      $button = e.target;
       $sidebar = this.get(e.target.dataset.sidebarOpen);
     } else if ($button = e.target.closest('[data-sidebar-open]')) {
       $sidebar = this.get($button.dataset.sidebarOpen);
@@ -28,6 +29,10 @@ var sidebars = {
       $sidebar = e.target;
     } else {
       $sidebar = e.target.closest('.sidebar');
+    }
+
+    if ($button) {
+      this.open($button.dataset.sidebarOpen);
     }
 
     if ($sidebar) {

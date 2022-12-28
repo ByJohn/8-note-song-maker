@@ -19,6 +19,7 @@ function debounce(func, wait, immediate) {
 function init() {
   sounds.init();
   sequencer.init();
+  sidebars.init();
   ui.init();
 }
 

@@ -443,13 +443,23 @@ form {
   background-color: var(--note-8-colour);
 }
 
+
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
   width: 20em;
   max-width: 90%;
+  background-color: #fff;
   transform: translateX(-100%);
+  transition: all 200ms;
+  pointer-events: none;
+}
+
+.sidebar.open {
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  transform: translateX(0);
+  pointer-events: all;
 }
 
 

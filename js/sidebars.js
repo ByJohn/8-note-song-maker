@@ -19,6 +19,8 @@ var sidebars = {
   clickAnywhere: function (e) {
     let $sidebar = null;
 
+    if (e.target.dataset.sidebar) {
+    }
     if (e.target.classList.contains('sidebar')) {
       $sidebar = e.target;
     } else {

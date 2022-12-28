@@ -19,8 +19,9 @@ var sidebars = {
   clickAnywhere: function (e) {
     let $sidebar = null;
 
-    if (e.target.dataset.sidebar) {
-    }
+    if (typeof e.target.dataset.sidebarOpen !== 'undefinined') {
+      $sidebar = this.get(e.target.dataset.sidebarOpen);
+    } else if (e.target.closest('[data-sidebar-open]'))
     if (e.target.classList.contains('sidebar')) {
       $sidebar = e.target;
     } else {

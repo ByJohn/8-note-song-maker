@@ -1,6 +1,5 @@
 //Sidebars
 var sidebars = {
-  $menuToggle: document.getElementById('menu-toggle'),
   sidebars: {},
 
   init: function () {

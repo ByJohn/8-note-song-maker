@@ -6,7 +6,7 @@ var sidebars = {
   init: function () {
     let that = this;
 
-    document.querySelectortAll('.sidebar[data-sidebar]').forEach(function ($sidebar) {
+    document.querySelectorAll('.sidebar[data-sidebar]').forEach(function ($sidebar) {
       let name = $sidebar.dataset.sidebar;
 
       that.sidebars[name] = $sidebar;

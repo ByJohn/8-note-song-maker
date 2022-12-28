@@ -30,6 +30,15 @@ body {
 /*   background-color: #eee; */
 }
 
+a {
+  color: var(--note-7-colour);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 button {
   display: inline-block;
   border: none;
@@ -447,11 +456,14 @@ form {
 
 .sidebar {
   position: fixed;
+  overflow: auto;
   z-index: 5;
   top: 0;
   left: 0;
   width: 20em;
-  max-width: 90%;
+  max-width: 80%;
+  height: 100%;
+  padding: 1.5em;
   background-color: #fff;
   transform: translateX(-100%);
   transition: all 200ms;
@@ -462,6 +474,34 @@ form {
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
   transform: translateX(0);
   pointer-events: all;
+}
+
+.sidebar-menu ul.links {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-menu ul.links li {
+  margin: 0;
+}
+
+.sidebar-menu ul.links a {
+  display: block;
+  padding: 1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.sidebar-menu ul.links a:hover {
+  background-color: var(--note-7-colour);
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar-menu ul.links li:last-child a {
+  border-bottom: none;
 }
 
 

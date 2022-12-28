@@ -27,7 +27,7 @@ var sidebars = {
       $sidebar = e.target.closest('.sidebar');
     }
 
-    
+    if ($sidebar)
   },
 
   get: function (name) {
@@ -50,8 +50,12 @@ var sidebars = {
     if ($sidebar && $sidebar.classList.contains('open')) {
       $sidebar.classList.remove('open');
     }
-    closeAll: function (except) {
-      
-    },
+  },
+  closeAll: function (except) {
+    for (name in this.sidebars) {
+      if (typeof except === 'undefined' || except != name) {
+        this.close(name);
+      }
+    }
   },
 };

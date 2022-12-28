@@ -476,6 +476,12 @@ form {
   pointer-events: all;
 }
 
+.sidebar h3:nth-child(n+1) {
+  padding-top: 1em;
+  border-top: 1px solid #ddd;
+  font-weight: normal;
+}
+
 .sidebar-menu ul.links {
   display: flex;
   flex-direction: column;
@@ -503,6 +509,50 @@ form {
 .sidebar-menu ul.links li:last-child a {
   border-bottom: none;
 }
+
+.sidebar-menu .examples-songs {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 1em;
+  margin: 0;
+  padding: 0;
+  font-size: 0.85em;
+}
+
+.sidebar-menu .examples-songs li {
+  margin: 0;
+}
+
+.sidebar-menu .examples-songs strong {
+  display: block;
+  font-weight: inherit;
+}
+
+.sidebar-menu .examples-songs a {
+  display: inline-block;
+  padding: 0.2em 0.8em;
+  border-radius: 30px;
+  border: 1px solid;
+  color: var(--note-7-colour);
+  font-size: 0.9em;
+}
+
+.sidebar-menu .examples-songs a:hover {
+  background-color: var(--note-7-colour);
+  color: #fff;
+  text-decoration: none;
+}
+
+/*
+.sidebar-menu .examples-songs a:before {
+  content: '[';
+}
+
+.sidebar-menu .examples-songs a:after {
+  content: ']';
+}
+*/
 
 
 @media print {

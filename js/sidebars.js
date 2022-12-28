@@ -16,6 +16,7 @@ var sidebars = {
   },
   setupEvents: function () {
     this.$menuToggle.addEventListener('click', this.open.bind(this, 'menu'), false);
+    document.addEventListener('click', );
   },
 
   get: function (name) {

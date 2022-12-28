@@ -16,7 +16,18 @@ var sidebars = {
   },
   setupEvents: function () {
     this.$menuToggle.addEventListener('click', this.open.bind(this, 'menu'), false);
-    document.addEventListener('click', );
+    window.addEventListener('click', this.clickAnywhere.bind(this), false);
+  },
+  clickAnywhere: function (e) {
+    let $sidebar = null;
+
+    if (e.target.classList.contains('sidebar')) {
+      $sidebar = e.target;
+    } else {
+      $sidebar = e.target.closest('.sidebar');
+    }
+
+    
   },
 
   get: function (name) {
@@ -39,5 +50,8 @@ var sidebars = {
     if ($sidebar && $sidebar.classList.contains('open')) {
       $sidebar.classList.remove('open');
     }
+    closeAll: function (except) {
+      
+    },
   },
 };

@@ -443,12 +443,18 @@ form {
   background-color: var(--note-8-colour);
 }
 
+.sidebar {
+  position: fixed;
+}
+
+
 @media print {
   @page {
     size: landscape;
   }
 
-  .top {
+  .top,
+  .sidebar {
     display: none;
   }
 

@@ -140,6 +140,9 @@ var ui = {
     return hash;
   },
   songLinkClicked: function (e) {
+    if (!e.target.href) return;
+
+    
     // e.preventDefault();
   },
   export: function () {

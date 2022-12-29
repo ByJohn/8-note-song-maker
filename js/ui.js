@@ -155,6 +155,8 @@ var ui = {
 
     this.processForm();
 
+    sidebars.closeAll();
+
     e.preventDefault();
   },
   export: function () {

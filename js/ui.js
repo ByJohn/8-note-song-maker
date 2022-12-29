@@ -20,6 +20,12 @@ var ui = {
     document.addEventListener('click', this.maybePlaySoundOnClick.bind(this), false);
 
     document.addEventListener('keydown', this.maybePlaySoundOnKeyDown.bind(this), false);
+
+    window.addEventListener('popstate', this.popState.bind(this), false);
+  },
+  popState: function (e) {
+    this.updateFormFromHash();
+    this.processForm();
   },
   formSubmitted: function (e) {
     e.preventDefault();
@@ -155,9 +161,11 @@ var ui = {
 
     if (parts.length < 2) return;
 
-    this.setHash(parts[1]);
-    
+    this.setHash(parts[1], true);
+
     this.updateFormFromHash();
+
+    this.processForm();
 
     e.preventDefault();
   },

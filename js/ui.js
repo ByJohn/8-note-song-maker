@@ -20,12 +20,6 @@ var ui = {
     document.addEventListener('click', this.maybePlaySoundOnClick.bind(this), false);
 
     document.addEventListener('keydown', this.maybePlaySoundOnKeyDown.bind(this), false);
-
-    window.addEventListener('popstate', this.popState.bind(this), false);
-  },
-  popState: function (e) {
-    this.updateFormFromHash();
-    this.processForm();
   },
   formSubmitted: function (e) {
     e.preventDefault();
@@ -140,21 +134,16 @@ var ui = {
 
     return hash;
   },
-  setHash: function (hash, addToHistory) {
-    addToHistory = typeof addToHistory === 'undefined' ? false : addToHistory;
-
+  setHash: function (hash) {
     if(history.replaceState) {
-      if (addToHistory) {
-        history.pushState({}, '', '#' + hash);
-      } else {
-        history.replaceState('', document.title, '#' + hash);
-      }
+      history.replaceState('', document.title, '#' + hash);
     }
     else {
       location.hash = '#' + hash;
     }
   },
   songLinkClicked: function (e) {
+    console.log(e.target.href);
     if (!e.target.href) return;
 
     let parts = e.target.href.split('#');

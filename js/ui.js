@@ -139,6 +139,9 @@ var ui = {
 
     return hash;
   },
+  songLinkClicked: function (e) {
+    console.log('click', e);
+  },
   export: function () {
     let that = this,
         scale = 2,

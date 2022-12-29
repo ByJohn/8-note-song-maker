@@ -15,6 +15,10 @@ var sidebars = {
   },
   setupEvents: function () {
     window.addEventListener('click', this.clickAnywhere.bind(this), false);
+
+    document.querySelectorAll('.sidebar-menu .example-songs a').forEach(function ($a) {
+      $a.addEventListener('click', ui.songLinkClicked.bind(ui), false);
+    });
   },
   clickAnywhere: function (e) {
     let $button = null,
@@ -52,8 +56,6 @@ var sidebars = {
   },
   open: function (name) {
     let $sidebar = this.get(name);
-
-    console.log(name, $sidebar);
 
     if ($sidebar && !$sidebar.classList.contains('open')) {
       $sidebar.classList.add('open');

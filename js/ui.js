@@ -130,17 +130,23 @@ var ui = {
       .replace(/ /g, '_') //Replace spaces with underscores
       .replace(/\n/g, '~'); //Replace new lines with tildes
 
+    this.setHash(hash);
+
+    return hash;
+  },
+  setHash: function (hash, addToHistory) {
+    addToHistory = typeof addToHistory === 'undefined' ? false : addToHistory;
+
     if(history.replaceState) {
-      history.replaceState('', document.title, '#' + hash);
+      if (addToHistory) {
+        history.pushState({}, '', '#' + hash);
+      } else {
+        history.replaceState('', document.title, '#' + hash);
+      }
     }
     else {
       location.hash = '#' + hash;
     }
-
-    return hash;
-  },
-  setHash: function (hash) {
-    
   },
   songLinkClicked: function (e) {
     if (!e.target.href) return;
@@ -149,9 +155,11 @@ var ui = {
 
     if (parts.length < 2) return;
 
+    this.setHash(parts[1]);
     
+    this.updateFormFromHash();
 
-    // e.preventDefault();
+    e.preventDefault();
   },
   export: function () {
     let that = this,

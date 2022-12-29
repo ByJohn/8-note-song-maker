@@ -103,8 +103,8 @@ var ui = {
         break;
     }
   },
-  updateFormFromHash: function () {
-    let hash = location.hash.replace('#', '').trim();
+  updateFormFromHash: function (hash) {
+    hash = typeof hash === 'undefined' ? '' : location.hash.replace('#', '').trim();
 
     if (!hash) return false;
 
@@ -139,10 +139,18 @@ var ui = {
 
     return hash;
   },
+  setHash: function (hash) {
+    
+  },
   songLinkClicked: function (e) {
     if (!e.target.href) return;
 
+    let parts = e.target.href.split('#');
+
+    if (parts.length < 2) return;
+
     
+
     // e.preventDefault();
   },
   export: function () {

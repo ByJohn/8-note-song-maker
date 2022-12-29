@@ -1,5 +1,3 @@
-Update notes after song change
-Preset songs
 Highlight melody notes
 Unsupported browser message
   CSS variables

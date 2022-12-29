@@ -104,7 +104,7 @@ var ui = {
     }
   },
   updateFormFromHash: function (hash) {
-    hash = typeof hash === 'undefined' ? '' : location.hash.replace('#', '').trim();
+    hash = typeof hash === 'undefined' ? location.hash.replace('#', '').trim() : '';
 
     if (!hash) return false;
 
@@ -143,12 +143,11 @@ var ui = {
     }
   },
   songLinkClicked: function (e) {
-    console.log(e.target.href);
     if (!e.target.href) return;
 
     let parts = e.target.href.split('#');
 
-    if (parts.length < 2) return;
+    if (parts.length < 2) return; //Exit if the URL does not have a hash
 
     this.setHash(parts[1], true);
 

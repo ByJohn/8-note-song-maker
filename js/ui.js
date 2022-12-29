@@ -140,7 +140,7 @@ var ui = {
     return hash;
   },
   songLinkClicked: function (e) {
-    console.log('click', e);
+    // e.preventDefault();
   },
   export: function () {
     let that = this,

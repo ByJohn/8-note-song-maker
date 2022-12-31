@@ -476,6 +476,10 @@ form {
   border-top: none;
 }
 
+.sidebar-menu p {
+  font-size: 0.85em;
+}
+
 .sidebar-menu ul.links {
   display: flex;
   flex-direction: column;

@@ -21,6 +21,7 @@ function init() {
   sequencer.init();
   sidebars.init();
   ui.init();
+  songs.init();
 }
 
 init();

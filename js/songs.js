@@ -8,7 +8,15 @@ var songs = {
     this.processList();
   },
   processList: function () {
+    var now = Date.now(),
+        month_seconds = 1000 * 60 * 60 * 24 * 30;
+
     this.$songs.forEach(function ($song) {
+      var time = new Date($song.dataset.date).getTime();
+
+      if (now - time < month_seconds * 6) {
+        $song.insertAdjacentHTML()
+      }
     });
   },
 };

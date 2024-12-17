@@ -14,8 +14,16 @@ var songs = {
     this.$songs.forEach(function ($song) {
       var time = new Date($song.dataset.date).getTime();
 
-      if (now - time < month_seconds * 6) {
-        $song.insertAdjacentHTML()
+      if (now - time < month_seconds * 13) {
+        var text = 'New-ish',
+            className = 'newish';
+
+        if (now - time < month_seconds * 6) {
+          text = 'New';
+          className = 'new';
+        }
+
+        $song.querySelector('strong').insertAdjacentHTML('beforeend', '<span class="label ' + className + '" title="' + $song.dataset.date + '">' + text + '</span>');
       }
     });
   },

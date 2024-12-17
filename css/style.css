@@ -536,11 +536,13 @@ form {
   background-color: #2e7d32;
   font-size: 0.75em;
   color: #fff;
+  cursor: help;
 }
 
 .sidebar-menu .example-songs strong .label.newish {
-  background-color: #8bc34a;
-  color: inherit;
+  border: 1px solid;
+  background: none;
+  color: #2e7d32;
 }
 
 .sidebar-menu .example-songs a {

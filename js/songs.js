@@ -9,12 +9,12 @@ var songs = {
   },
   processList: function () {
     var now = Date.now(),
-        month_seconds = 1000 * 60 * 60 * 24 * 30;
+        month_seconds = 1000 * 60 * 60 * 24 * 31;
 
     this.$songs.forEach(function ($song) {
       var time = new Date($song.dataset.date).getTime();
 
-      if (now - time < month_seconds * 13) {
+      if (now - time < month_seconds * 12) {
         var text = 'New-ish',
             className = 'newish';
 
@@ -23,7 +23,7 @@ var songs = {
           className = 'new';
         }
 
-        $song.querySelector('strong').insertAdjacentHTML('beforeend', '<span class="label ' + className + '" title="' + $song.dataset.date + '">' + text + '</span>');
+        $song.querySelector('strong').insertAdjacentHTML('beforeend', '<span class="label ' + className + '" title="Added ' + $song.dataset.date + '">' + text + '</span>');
       }
     });
   },

@@ -1,14 +1,14 @@
 //Sounds
 var sounds = {
   _sounds: {
-    1: {url: 'https://cdn.glitch.global/c67f43ce-4102-41a6-8d66-8c89ab5d0e0c/1.mp3'},
-    2: {url: 'https://cdn.glitch.global/c67f43ce-4102-41a6-8d66-8c89ab5d0e0c/2.mp3'},
-    3: {url: 'https://cdn.glitch.global/c67f43ce-4102-41a6-8d66-8c89ab5d0e0c/3.mp3'},
-    4: {url: 'https://cdn.glitch.global/c67f43ce-4102-41a6-8d66-8c89ab5d0e0c/4.mp3'},
-    5: {url: 'https://cdn.glitch.global/c67f43ce-4102-41a6-8d66-8c89ab5d0e0c/5.mp3'},
-    6: {url: 'https://cdn.glitch.global/c67f43ce-4102-41a6-8d66-8c89ab5d0e0c/6.mp3'},
-    7: {url: 'https://cdn.glitch.global/c67f43ce-4102-41a6-8d66-8c89ab5d0e0c/7.mp3'},
-    8: {url: 'https://cdn.glitch.global/c67f43ce-4102-41a6-8d66-8c89ab5d0e0c/8.mp3'},
+    1: {url: 'sounds/1.mp3'},
+    2: {url: 'sounds/2.mp3'},
+    3: {url: 'sounds/3.mp3'},
+    4: {url: 'sounds/4.mp3'},
+    5: {url: 'sounds/5.mp3'},
+    6: {url: 'sounds/6.mp3'},
+    7: {url: 'sounds/7.mp3'},
+    8: {url: 'sounds/8.mp3'},
   },
   init: function () {
     for (let id in this._sounds) {

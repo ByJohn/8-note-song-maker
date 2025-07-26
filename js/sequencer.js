@@ -69,7 +69,7 @@ var sequencer = {
   parseLines: function (lines) {
     let that = this,
         song = [];
-    
+
     lines = lines.split("\n");
 
     lines.forEach(function (line, row) {
@@ -189,7 +189,7 @@ var sequencer = {
   },
   stop: function () {
     if (!this.playing) return false;
-    
+
     this.stopTicker();
 
     this.stopPlayingAnimation();
@@ -211,7 +211,7 @@ var sequencer = {
     if (this.songStep === 0) {
       this.restartPlayingAnimation();
     }
-    
+
     //Play all notes
     this.song[this.songStep].forEach(function (note) {
       sounds.play(note);

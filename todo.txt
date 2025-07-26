@@ -1,9 +1,0 @@
-Highlight melody notes
-Unsupported browser message
-  CSS variables
-  calc
-  ES6
-Note pulse when played
-Asset cache-buster
-Custom colours
-Numbers on mobile keyboard

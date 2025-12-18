@@ -12,18 +12,29 @@ var songs = {
         month_seconds = 1000 * 60 * 60 * 24 * 31;
 
     this.$songs.forEach(function ($song) {
-      var time = new Date($song.dataset.date).getTime();
+      var added = new Date($song.dataset.added).getTime(),
+          updated = new Date($song.dataset.updated).getTime(),
+          text = '',
+          description = '',
+          className = '';
 
-      if (now - time < month_seconds * 12) {
-        var text = 'New-ish',
-            className = 'newish';
+      if (now - added < month_seconds * 12) {
+        text = 'New-ish';
+        className = 'newish';
+        description = 'Added ' + $song.dataset.added;
 
-        if (now - time < month_seconds * 6) {
+        if (now - added < month_seconds * 6) {
           text = 'New';
           className = 'new';
         }
+      } else if (now - updated < month_seconds * 6) {
+        text = 'Updated';
+        className = 'updated';
+        description = 'Updated ' + $song.dataset.updated;
+      }
 
-        $song.querySelector('strong').insertAdjacentHTML('beforeend', '<span class="label ' + className + '" title="Added ' + $song.dataset.date + '">' + text + '</span>');
+      if (text && className) {
+        $song.querySelector('strong').insertAdjacentHTML('beforeend', '<span class="label ' + className + '" title="' + description + '">' + text + '</span>');
       }
     });
   },

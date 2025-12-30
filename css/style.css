@@ -209,6 +209,7 @@ form {
   --line-width: 2px;
   --left-start: calc(((var(--padding) * 2) + var(--note-gap) + (var(--note-width) / 2)) - (var(--line-width) / 2));
   --song-width: calc(var(--song-length) * (var(--note-gap) + var(--note-width)));
+  --animation-delay: calc(-1 * (var(--beat-duration) * var(--start-step)));
   overflow-x: auto;
   overflow-y: hidden;
   flex: 1 0 max-content;
@@ -231,7 +232,7 @@ form {
 }
 
 .wide-song.playing-animation .sequence-inner {
-  animation: pan-notes var(--song-duration) calc( var(--beat-duration) * 2) linear forwards;
+  animation: pan-notes var(--song-duration) calc(var(--animation-delay) + (var(--beat-duration) * 2)) linear forwards;
   /* animation-timing-function: cubic-bezier(0.1, 0, 1, 1); */
 }
 
@@ -274,10 +275,11 @@ form {
 
 .sequence .play-needle {
   --pan-needle-right: var(--song-width);
-  opacity: 0;
+  --offset-left-start: min(100%, calc(var(--left-start) + ((var(--note-width) + var(--note-gap)) * var(--start-step))));
+  opacity: var(--start-step); /* If start step is set (ie. greater than zero), it will be visible */
   position: absolute;
   top: 0;
-  left: var(--left-start);
+  left: var(--offset-left-start);
   width: var(--line-width);
   height: 100%;
   background-color: #666;
@@ -285,7 +287,8 @@ form {
 
 .playing-animation .sequence .play-needle {
   opacity: 1;
-  animation: pan-needle var(--song-duration) linear forwards;
+  left: var(--left-start);
+  animation: pan-needle var(--song-duration) var(--animation-delay) linear forwards;
 }
 
 @keyframes pan-needle {

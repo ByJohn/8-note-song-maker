@@ -10,9 +10,11 @@ var sequencer = {
   playing: false,
   defaultSettings: {
     bpm: 120,
+    startStep: 0,
   },
   settingsLabelMappings: {
     t: 'bpm',
+    s: 'startStep',
   },
   settings: {},
   ticker: {
@@ -103,6 +105,7 @@ var sequencer = {
     document.documentElement.style.setProperty('--song-length', this.song.length);
     document.documentElement.style.setProperty('--song-duration', songDuration + 's');
     document.documentElement.style.setProperty('--beat-duration', beatDuration + 's');
+    document.documentElement.style.setProperty('--start-step', this.settings.startStep);
   },
 
   //Drawing
@@ -144,6 +147,8 @@ var sequencer = {
       $rows.forEach(function (row) {
         let el = document.createElement('li');
 
+        el.title = 'Beat ' + (i);
+
         newEls.push(el);
 
         row.appendChild(el);
@@ -163,6 +168,7 @@ var sequencer = {
         //Add note data to the note element
         el.textContent = note;
         el.classList.add('note-' + note);
+        el.title = 'Note ' + (note) + ', ' + el.title;
         el.dataset.play = note;
       });
     });
@@ -178,6 +184,8 @@ var sequencer = {
   },
   play: function () {
     if (this.playing) return false;
+
+    this.resetStep();
 
     this.$sequence.scrollTo(0, 0);
 
@@ -208,7 +216,7 @@ var sequencer = {
       return;
     }
 
-    if (this.songStep === 0) {
+    if (this.songStep === this.settings.startStep) {
       this.restartPlayingAnimation();
     }
 
@@ -227,7 +235,7 @@ var sequencer = {
     }
   },
   resetStep: function () {
-    this.songStep = 0;
+    this.songStep = this.settings.startStep;
   },
   restartPlayingAnimation: function () {
     document.body.classList.remove('playing-animation');

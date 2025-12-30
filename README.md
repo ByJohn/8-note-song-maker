@@ -12,11 +12,12 @@ Notes are added by typing numbers 1-8 in the text box. Multiple lines of numbers
 
 ### Song Options
 
-The first line can also be reserved for song options. Options are formatted with a designated letter and a value (`[LETTER][VALUE]` eg. `t140`).
+The first line can also be reserved for song options. Options are formatted with a designated letter and a value (`[LETTER][VALUE]` eg. `t140`). Multiple options are separated with a space.
 
 | Option | Description | Letter | Value | Example |
 | --- | --- | --- | --- | --- |
 | Tempo | The beats per minute of the song. Default is 120 BPM. | `t` | Positive integer | `t200` (200 BPM) |
+| Start Position | The beat (step) from which the song will begin playing (zero-indexed). Default is 0. | `s` | Positive integer | `s32` (Begin at beat 32) |
 
 ## Sharing Songs
 
